@@ -4,23 +4,24 @@ An e-commerce web based information system developed using Django as a full-stac
 # Installing the project
 ## install python
 www.python.org/downloads/
-## create virtual environment
-,,,console
+- create virtual environment
+```console
 python -m venv EnvironmentName
-,,,
-## activate the virtual environment
-,,,console
+```
+- activate the virtual environment
+```console
 EnvironmentName\scripts\activate
-,,,
-## clone project
-,,,console
+```
+- clone project
+```console
 git clone https://github.com/AdhamMagdyA/Market
 cd Market
-,,,
-## install deps
-,,,console
+```
+- install deps
+```console
 pip install -r requirements.txt
-,,,
-## run server
-,,,console
+```
+- run server
+```console
 python manage.py runserver
+```
