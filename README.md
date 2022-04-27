@@ -2,7 +2,7 @@
 An e-commerce web based information system developed using Django as a full-stack technology
 
 # Installing the project
-## install python
+- install python
 www.python.org/downloads/
 - create virtual environment
 ```console
