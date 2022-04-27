@@ -1,0 +1,118 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/carts/shopping_cart.css' %}">
+    <link rel="icon" type="image/x-icon" href="{% static 'images/carts/favic.ico' %}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <section id="cart">
+            <article class="product">
+                <header>
+                    <a class="remove">
+                        <img src="{% static 'images/carts/product 1.jpg' %}"
+                            alt="product preview">
+                    </a>
+                </header>
+
+                <div class="content">
+                    <div>
+                        <span class="minus" onclick="change">-</span>
+                        <span class="quantity">2</span>
+                        <span class="plus">+</span>
+                        <h1>Product #1</h1>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga omnis dolorem sed totam consequuntur unde dolores cupiditate officiis, quia facere excepturi optio reiciendis pariatur veritatis harum repellat dolor quod nostrum.</p>.
+                </div>
+
+                <div class="custom-footer-content custom-footer">
+
+                    <h2 class="full-price"> 29.98€</h2>
+                </div>
+            </article>
+            <article class="product">
+                <header>
+                    <a class="remove">
+                        <img src="{% static 'images/carts/product 2.jpg' %}"
+                            alt="product preview">
+                    </a>
+                </header>
+
+                <div class="content">
+                    <div>
+                        <span class="minus" onclick="change">-</span>
+                        <span class="quantity">2</span>
+                        <span class="plus">+</span>
+                        <h1>Product #2</h1>
+                    </div>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius facilis accusamus obcaecati fugit adipisci similique impedit quibusdam earum praesentium voluptatum, eveniet, vitae culpa quaerat modi, eaque dolor laborum vel iusto! </p>.
+                </div>
+
+                <div class="custom-footer-content custom-footer">
+
+                    <h2 class="full-price"> 30.08€</h2>
+                </div>
+            </article>
+        </section>
+
+    </div>
+
+    <div id="site-footer" class="custom-footer">
+
+        <table>
+            <tr>
+                <th class="th_head">
+                    Subtotal
+                </th>
+                <td class="td_data">
+                    163.96
+                </td>
+            </tr>
+            <tr>
+                <th class="th_head">
+                    Taxes (5%)
+                </th>
+                <td class="td_data">
+                    8.2
+                </td>
+            </tr>
+            <tr>
+                <th class="th_head">
+                    Shipping
+                </th>
+                <td class="td_data">
+                    5.00
+                </td>
+            </tr>
+            <tr>
+                <th class="conclusion">Total <span style="margin-left: 60px;">177.16</span></th>
+            </tr>
+        </table>
+        <a class="btn">Checkout</a>
+        <!--<div class="container clearfix">
+            <h2 class="subtotal" id="left">Subtotal: <span id="right">163.96</span>€</h2>
+            <h3 class="tax" id="left">Taxes (5%): <span  id="right">8.2</span>€</h3>
+            <h3 class="shipping" id="left">Shipping: <span  id="right">5.00</span>€</h3>
+            <h1 class="total">Total: <span>177.16</span>€</h1>
+            <a class="btn">Checkout</a>
+    
+        </div>-->
+    </div>
+
+
+
+</body>
+
+</html>
+{% endblock %}
