@@ -1,0 +1,196 @@
+
+body{
+    background-color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif;
+    height: 1200;
+}
+.main{
+    padding-top: 80px;
+    padding-bottom: 100px;
+}
+.outside {
+    margin: 15px;
+    position: center;
+    text-align: center;
+    font-size: 13;
+    font-weight: 700;
+}
+
+p.outside{
+    color: rgb(89, 88, 88);
+}
+
+p.outside a{
+    color: rgb(250, 196, 0);
+}
+
+
+.form_container{
+    width: 600;
+    height: 980;
+    border:0.5px solid rgb(215, 215, 215);
+    border-radius: 3px;
+    margin: auto;
+}
+
+form{
+    margin-left: 15;
+}
+
+form label{
+    display: flex;
+    margin-top: 20;
+    font-size: 18;
+    font-weight: bolder;
+}
+
+input[type="text"] , [type="password"], [type="email"] {
+    height: 35px;
+    line-height: 35px;
+    width: 96%;
+    cursor:text;
+    color: rgb(72, 72, 72);
+    /* color: #3C162F;  */
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 6px 10px 6px 10px;
+    outline-color: rgb(255, 196, 0);
+    border: 1.3px solid #cccccc;
+    box-sizing: border-box;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    appearance:auto;
+    letter-spacing: 1px;
+}
+
+.re_co{
+    font-size: 15;
+}
+
+p.guides{
+    font-size: 10;
+    margin-top: 3px;
+    font-weight: 600;
+    color: #791b58;
+    color: #7a7a7a;
+    margin-top: 3px;
+    margin-left: 1px;
+}
+
+.guides:hover{
+    color: #791b58;
+}
+
+
+h2{
+    font-weight: 900;
+    text-align: center;
+    padding-top: 6;
+    padding-bottom: 10;
+    font-family: 'DM Sans', sans-serif;
+}
+ 
+
+
+.img_container {
+    display:block;
+    height: 140;
+    width: 140;
+    margin-top: 10;
+    border-radius: 2%;
+    border: 1px solid rgb(137, 137, 137);
+    background-color: rgb(246, 245, 245);
+    color:rgb(175, 173, 173);
+    background-image:var("file");
+  }
+
+
+
+.btn {
+    display:flex;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: 1px solid rgb(255, 187, 0);
+    background-color: rgb(245, 186, 26);
+    color:rgb(255, 255, 254);
+    position:relative;
+    left: 57%;
+    top: 44%;
+    
+  }
+
+  .img_container label :hover{
+   
+    cursor:text;
+  }
+
+.fa-plus{
+    color:white;
+    padding: auto;
+    position:relative;
+    left: 35.5%;
+    top: 35%;
+  }
+
+input [type="radio"]:checked{
+    background-color: rgb(255, 190, 27);
+}
+
+.input_field.radio_option{
+    display: inline-block;
+}
+
+.input_field label{
+    display: inline-block;
+    color: rgb(57, 57, 57);
+    font-size: 15;
+}
+
+
+
+h5{
+
+    font-size: 18;
+    margin-top: 18px;
+    font-weight: 600;
+    margin-top: 20;
+    margin-bottom: 6;
+    color: #3C162F;
+}
+
+
+.checkbox_option label{
+    margin: 8;
+    color: rgb(57, 57, 57);
+    font-size: 13;
+}
+
+button[type="submit"] {
+    margin-top: 15;
+    height: 35px;
+    line-height: 35px;
+    width: 96%;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    background: rgb(245, 186, 26);
+    border-style: none;
+}
+
+  input[type="submit"] {
+    margin-top: 15;
+    height: 35px;
+    line-height: 35px;
+    width: 96%;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    background: rgb(245, 186, 26);
+    border-style: none;
+}
+
+sup{
+    color: red;
+}
