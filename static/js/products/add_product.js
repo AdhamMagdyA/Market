@@ -9,3 +9,6 @@ const fileChosen = document.getElementById('file-chosen');
     }
     reader.readAsDataURL(event.target.files[0]);
   }
+
+
+
