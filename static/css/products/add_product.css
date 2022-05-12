@@ -13,7 +13,7 @@ textarea {
 }
 
 label {
-    padding: 12px 12px 12px 0;
+    padding: 7px 12px 12px 0;
     margin-left: 105px;
     display: inline-block;
 }
@@ -37,7 +37,9 @@ input[type=submit]:hover {
     background-color: #3c162f;
     color: #fff;
     font-size: 17px;
-    padding: 12px;
+    padding: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
     text-align: center;
     margin-left: 15px;
     border: none;
@@ -64,13 +66,13 @@ input[type=submit]:hover {
     margin: 0 0 15% -25%;
 }
 
-.col-25 {
+.column1 {
     float: left;
     width: 25%;
     margin-top: 6px;
 }
 
-.col-75 {
+.column2 {
     float: left;
     width: 75%;
     margin-top: 6px;
@@ -101,4 +103,8 @@ h1 {
 #output_image {
     height: 150px;
     width: 150px;
+}
+
+abbr {
+    color: rgb(210, 37, 37);
 }
