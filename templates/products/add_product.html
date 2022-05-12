@@ -1,40 +1,79 @@
-{% extends 'core/base.html' %}
-{% load static %}
+<!--فاضل الفاليدشن بتاع الصورة بسسس اااااااااااه -->
 
-{% block content %}
+
 <!DOCTYPE html>
 <html>
 
 <head>
     <title></title>
-    <link rel="stylesheet" href="{% static 'css/products/add_product.css' %}">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/add_product.css">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+
+
 </head>
 
 <body>
-    
+    <nav class="navbar">
+        <div class="nav">
+            <img src="img/logo.jpg" alt="lolo" class="site-logo">
+            <div class="nav-items">
+                <div class="search">
+                    <input type="text" class="search-box" placeholder="search product">
+                    <button class="search-button">search</button>
+
+                </div>
+                <div class="sign">
+                    <button class="signs-btn"><a href="#">sign up</a></button>
+                    <button class="signs-btn"><a href="#">sign in</a></button>
+                </div>
+                <div class="notification">
+                    <i class="fa fa-bell fa-2x"></i>
+                </div>
+
+            </div>
+
+
+        </div>
+        <ul class="links-container">
+            <li class="link-item"><a href="#" class="link">home</a></li>
+            <li class="link-item"><a href="#" class="link">cloths</a></li>
+            <li class="link-item"><a href="#" class="link">electronics</a></li>
+
+        </ul>
+
+    </nav>
+
+
+    <!--------------------------------------------------------------------------------------------------------------->
+
+
     <div class="all">
         <div class="container">
             <h1>Product Information</h1>
             <form>
 
                 <div class="row">
-                    <div class="col-25">
-                        <label for="fname">product title</label>
+                    <div class="column1">
+                        <label for="fname">product title<abbr title="This field is mandatory"
+                                aria-label="required">*</abbr></label>
                     </div>
-                    <div class="col-75">
-                        <input type="text" id="pTitle" name="prodtitle" placeholder="product title..">
+                    <div class="column2">
+                        <input type="text" id="pTitle" name="prodtitle" placeholder="product title.." required>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-25">
-                        <label for="pimg">product image</label>
+                    <div class="column1">
+                        <label for="pimg">product image <abbr title="This field is mandatory"
+                                aria-label="required">*</abbr></label>
                     </div>
-                    <div class="col-75">
+                    <div class="column2">
                         <img id="output_image">
 
-                        <input type="file" id="actual-btn" hidden accept="image/*" onchange="preview_image(event)">
-                        <label for="actual-btn" class="actual-btn">Choose File</label>
+                        <input type="file" id="actual-btn" hidden accept="image/*" onchange="preview_image(event)"
+                            required="">
+                        <label for="actual-btn" class="actual-btn">Choose Image</label>
 
 
 
@@ -42,39 +81,43 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-25">
-                        <label for="Price">Price</label>
+                    <div class="column1">
+                        <label for="Price">Price <abbr title="This field is mandatory"
+                                aria-label="required">*</abbr></label>
                     </div>
-                    <div class="col-75">
-                        <input type="text" id="pPrice" name="prodPrice" placeholder="00$">
+                    <div class="column2">
+                        <input type="text" id="pPrice" name="prodPrice" placeholder="00$" required>
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="col-25">
-                        <label for="amount">Amount</label>
+                    <div class="column1">
+                        <label for="amount">Amount<abbr title="This field is mandatory"
+                                aria-label="required">*</abbr></label>
                     </div>
-                    <div class="col-75">
-                        <input type="text" id="pAmount" name="prodAmount" placeholder="amount of product">
+                    <div class="column2">
+                        <input type="text" id="pAmount" name="prodAmount" placeholder="amount of product" required>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-25">
-                        <label for="category">category</label>
+                    <div class="column1">
+                        <label for="category">category<abbr title="This field is mandatory"
+                                aria-label="required">*</abbr></label>
                     </div>
-                    <div class="col-75">
-                        <select id="country" name="country">
-                            <option value="electronics">Electronics</option>
-                            <option value="menClothes">Men Clothes</option>
-                            <option value="womenClothe">Women Clothes</option>
+                    <div class="column2">
+                        <select id="country" name="country" required>
+                            <option value="">Select Category</option>
+                            <option value="1">Electronics</option>
+                            <option value="2">Men Clothes</option>
+                            <option value="3">Women Clothes</option>
                         </select>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-25">
+                    <div class="column1">
                         <label for="description">description</label>
                     </div>
-                    <div class="col-75">
+                    <div class="column2">
                         <textarea id="des" name="des" placeholder="Write description.." style="height:200px"></textarea>
                     </div>
                 </div>
@@ -93,11 +136,45 @@
     </div>
 
 
-    
-    <script src="{% static 'js/products/add_product.js' %}"></script>
+    <!--------------------------------------------------------------------------------------------------------------->
+
+
+    <footer>
+        <div class="footer">
+            <img src="img/logo.jpg" class="logo" alt="">
+            <div class="footer-ul-container">
+                <ul class="category">
+                    <li class="category-title">clothes</li>
+                    <li><a href="#" class="footer-link">dresses</a></li>
+                    <li><a href="#" class="footer-link">shirts</a></li>
+                    <li><a href="#" class="footer-link">jeans</a></li>
+                    <li><a href="#" class="footer-link">shoes</a></li>
+                    <li><a href="#" class="footer-link">watch</a></li>
+                </ul>
+                <ul class="category">
+                    <li class="category-title">electronics</li>
+                    <li><a href="#" class="footer-link">televisions</a></li>
+                    <li><a href="#" class="footer-link">computers</a></li>
+                    <li><a href="#" class="footer-link">headphones</a></li>
+                    <li><a href="#" class="footer-link">camera</a></li>
+                </ul>
+            </div>
+            <div class="about">
+                <p class="footer-title">about company</p>
+                <p class="info">provide ay nininini which customer need :)</p>
+                <p class="info">support email - customersupport@nininini.com</p>
+                <p class="info">telephone - +2011345677</p>
+            </div>
+            <div class="footer-social-container">
+                <a href="#" class="social-link">instagram</a>
+                <a href="#" class="social-link">facebook</a>
+                <a href="#" class="social-link">twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/add_product.js"></script>
 
 </body>
 
 </html>
-
-{% endblock %}
