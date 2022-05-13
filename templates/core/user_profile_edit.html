@@ -1,0 +1,153 @@
+<!--فاضل الفاليدشن بتاع الصورة بسسس اااااااااااه -->
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+
+    <link rel="stylesheet" href="css/user_profile_edit.css">
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+
+
+</head>
+
+<body>
+    <nav class="navbar">
+        <div class="nav">
+            <img src="img/logo.jpg" alt="lolo" class="site-logo">
+            <div class="nav-items">
+                <div class="search">
+                    <input type="text" class="search-box" placeholder="search product">
+                    <button class="search-button">search</button>
+
+                </div>
+                <div class="sign">
+                    <button class="signs-btn"><a href="#">sign up</a></button>
+                    <button class="signs-btn"><a href="#">sign in</a></button>
+                </div>
+                <div class="notification">
+                    <i class="fa fa-bell fa-2x"></i>
+                </div>
+
+            </div>
+
+
+        </div>
+        <ul class="links-container">
+            <li class="link-item"><a href="#" class="link">home</a></li>
+            <li class="link-item"><a href="#" class="link">cloths</a></li>
+            <li class="link-item"><a href="#" class="link">electronics</a></li>
+
+        </ul>
+
+    </nav>
+
+
+    <!--------------------------------------------------------------------------------------------------------------->
+
+
+    <div class="all">
+        <div class="container">
+
+            <form name="form1" action="#">
+
+                <div class="row im">
+                    <div class="column2">
+                        <img id="output_image" src="img/download.png">
+
+                        <input type="file" id="actual-btn" hidden accept="image/*" onchange="preview_image(event)"
+                            required="">
+                        <label for="actual-btn" class="actual-btn">Choose Image</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column1">
+                        <label for="fname">Name<abbr title="This field is mandatory"
+                                aria-label="required">*</abbr></label>
+                    </div>
+                    <div class="column2">
+                        <input type="text" id="pTitle" name="prodtitle" placeholder="user name.." required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column1">
+                        <label for="email">Email <abbr title="This field is mandatory"
+                                aria-label="required">*</abbr></label>
+                    </div>
+                    <div class="column2">
+                        <input type="text" id="Uemail" name="userEmail" placeholder="user@gmail.com" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column1">
+                        <label for="address">Address<abbr title="This field is mandatory"
+                                aria-label="required">*</abbr></label>
+                    </div>
+                    <div class="column2">
+                        <input type="text" id="uAddress" name="prodAmount" placeholder="user address.." required>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="btn">
+                        <input type="submit" value="Edit Profile" onclick="ValidateEmail(document.form1.userEmail)">
+                    </div>
+                </div>
+            </form>
+        </div>
+
+
+
+
+    </div>
+
+
+    <!--------------------------------------------------------------------------------------------------------------->
+
+
+    <footer>
+        <div class="footer">
+            <img src="img/logo.jpg" class="logo" alt="">
+            <div class="footer-ul-container">
+                <ul class="category">
+                    <li class="category-title">clothes</li>
+                    <li><a href="#" class="footer-link">dresses</a></li>
+                    <li><a href="#" class="footer-link">shirts</a></li>
+                    <li><a href="#" class="footer-link">jeans</a></li>
+                    <li><a href="#" class="footer-link">shoes</a></li>
+                    <li><a href="#" class="footer-link">watch</a></li>
+                </ul>
+                <ul class="category">
+                    <li class="category-title">electronics</li>
+                    <li><a href="#" class="footer-link">televisions</a></li>
+                    <li><a href="#" class="footer-link">computers</a></li>
+                    <li><a href="#" class="footer-link">headphones</a></li>
+                    <li><a href="#" class="footer-link">camera</a></li>
+                </ul>
+            </div>
+            <div class="about">
+                <p class="footer-title">about company</p>
+                <p class="info">provide ay nininini which customer need :)</p>
+                <p class="info">support email - customersupport@nininini.com</p>
+                <p class="info">telephone - +2011345677</p>
+            </div>
+            <div class="footer-social-container">
+                <a href="#" class="social-link">instagram</a>
+                <a href="#" class="social-link">facebook</a>
+                <a href="#" class="social-link">twitter</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/email.js"></script>
+
+</body>
+
+</html>
