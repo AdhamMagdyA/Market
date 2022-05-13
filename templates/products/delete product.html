@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Market/static/css/products/form-style.css">
+    <title>Delete Product</title>
+</head>
+
+<body>
+    <nav class="nav">
+        nav bar
+    </nav>
+    <form title="DELETE PRODUCT" id="form" class="form" method="get">
+        <center>
+            <h1 id="form-title">DELETE PRODUCT</h1>
+        </center>
+        <div id="field" class="form-control">
+            <label for="pId">Product ID <span id="required-field">*</span></label><br>
+            <input type="number" id="pId" name="pId" ><br>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamatition -circle"></i>
+            <small>Error message</small>
+        </div>
+        <div id="field" class="form-control">
+            <label for="password">Password <span id="required-field">*</span></label><br>
+            <input type="password" id="password" name="password" ><br>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamatition -circle"></i>
+            <small>Error message</small>
+        </div>
+
+        <div id="field" class="form-control">
+            <label for="confirmPassword">Confirm Password <span id="required-field">*</span></label><br>
+            <input type="password" id="confirmPassword" name="confirmPassword" ><br>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamatition -circle"></i>
+            <small>Error message</small>
+        </div>
+
+        <div id="note">
+            By deleting this Product website customers won't be able to view it as well as you<br>
+            Are you sure?
+        </div>
+        <button type="submit">Delete</button>
+    </form>
+</body>
+<script>
+document.onload = function () {
+    const form = document.getElementById("form");
+    const confirm_password = document.getElementById("confirmPassword");
+    const password = document.getElementById("password");
+    const pId = document.getElementById("pId");
+};
+
+if (document.getElementById("form")) {
+    console.log("not an error");
+    document.getElementById("form").addEventListener("submit", function (evt) {
+    evt.preventDefault();
+    checkInputs();});
+} 
+
+function checkInputs() {
+  const pId_value = document.getElementById("pId").value.trim();
+  const password_value = document.getElementById("password").value.trim();
+  const confirm_password_value = document.getElementById("confirmPassword").value.trim();
+
+  if (pId_value === "") {
+    setErrorFor(pId, "Product ID can't be blank");
+  } else {
+    setSuccessFor(pId);
+  }
+  var passOK = false;
+  if (password_value === "") {
+    setErrorFor(password, "Password can't be blank");
+  } else {
+    var uperLeters = /[A-Z]/g;
+    var digits = /[0-9]/g;
+    var lowerLeters = /[a-z]/g;
+
+  if (!password_value.match(uperLeters) || password_value.length < 8 ||!password_value.match(digits)||!password_value.match(lowerLeters)) {
+    setErrorFor(password, "password should be between 8 to 15 characters and contain at least one uppercase letter , one lowercase letter and one numeric digit.");
+  }
+  else {
+    setSuccessFor(password);
+    passOK = true;
+  }
+  if (confirm_password_value === "") {
+        setErrorFor(confirmPassword, "Password confirmation can't be blank");
+    } else {  
+        if (confirm_password_value === "" || password_value === "" || password_value !== confirm_password_value) {
+            setErrorFor(confirmPassword, "Should match the password");
+        }else if(passOK==false){
+            console.log(passOK)
+            setErrorFor(confirmPassword, "");
+        } 
+        else {
+            setSuccessFor(confirmPassword);
+        }
+    }
+  }
+  
+}
+
+function setErrorFor(input, message) {
+  const formControl = input.parentElement;
+  const small = formControl.querySelector("small");
+  small.innerText = message;
+  formControl.className = "form-control error";
+}
+function setSuccessFor(input) {
+    console.log('sucess');
+  const formControl = input.parentElement;
+  formControl.className = "form-control success";
+}
+
+</script>
+
+</html>

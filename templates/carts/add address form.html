@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Market/static/css/products/form-style.css ">
+    <title>Shipping Details</title>
+</head>
+
+<body>
+    <nav class="nav">
+        nav bar
+    </nav>
+    <form id="form" class="form" title="SHIPPING DETAILS" method="get">
+        <center>
+            <h1 id="form-title">SHIPPING DETAILS</h1>
+        </center>
+        <div id="field" class="form-control">
+            <label for="address">Adress <span id="required-field">*</span></label><br>
+            <input type="text" id="address" name="address"><br>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamatition -circle"></i>
+            <small>Error message</small>
+        </div>
+        <div id="field" class="tooltip">
+            <label for="land-mark">Land Mark</label><br>
+            <input type="text" id="land-mark" name="land-mark"><br>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamatition -circle"></i>
+            <small>Error message</small>
+            <span class="tooltiptext">Special mark for your address ex : Beside hotel X</span>
+        </div>
+
+        <div id="field" class="form-control">
+            <label for="contactNumber">Contact Number <span id="required-field">*</span></label><br>
+            <input type="number" id="contactNumber" name="contactNumber"><br>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamatition -circle"></i>
+            <small>Error message</small>
+        </div>
+
+        <div id="field" class="form-control">
+
+            <label for="buildding-type">Buildding Type<span id="required-field"> *</span></label><br><br>
+            <div id="choice">
+                <input type="radio" id="appartment" name="buildding-type" checked>
+                <label for="appartment">Appartment</label>
+            </div>
+            <div id="choice">
+                <input type="radio" id="office" name="buildding-type">
+                <label for="office">Office</label><br>
+            </div>
+            <i class="fas fa-check-circle"></i>
+            <i class="fas fa-exclamatition -circle"></i>
+            <small>Error message</small>
+        </div>
+        <div id="note">
+            Shipping will be within 10 days - 2 weeks and total fees should be payed to the ship man
+        </div>
+        <button type="submit">Order</button>
+    </form>
+</body>
+<script>
+    document.onload = function () {
+        const form = document.getElementById("form");
+        const address = document.getElementById("address");
+        const contactNumber = document.getElementById("contactNumber");
+    };
+    
+    if (document.getElementById("form")) {
+        console.log("not an error");
+        document.getElementById("form").addEventListener("submit", function (evt) {
+        evt.preventDefault();
+        checkInputs();});
+    } 
+    
+    function checkInputs() {
+      const address_value = document.getElementById("address").value.trim();
+      const contactNumber_value = document.getElementById("contactNumber").value.trim();
+    
+      if (address_value === "") {
+        setErrorFor(address, "Address can't be blank");
+      } else {
+        setSuccessFor(address);
+      }
+    
+      if (contactNumber_value === "") {
+        setErrorFor(contactNumber, "contact Number can't be blank");
+      }else if((contactNumber_value).length !== 11){
+          console.log('length');
+          setErrorFor(contactNumber, "Valid phone number should be 11 digits");
+      }
+    else {
+        setSuccessFor(contactNumber);
+      }
+    }
+    
+    function setErrorFor(input, message) {
+      const formControl = input.parentElement;
+      const small = formControl.querySelector("small");
+      small.innerText = message;
+      formControl.className = "form-control error";
+    }
+    function setSuccessFor(input) {
+        console.log('sucess');
+      const formControl = input.parentElement;
+      formControl.className = "form-control success";
+    }
+    
+    </script>
+
+</html>

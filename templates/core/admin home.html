@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/Market/static/css/core/charts-style.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
+  <link rel="stylesheet" href="/Market/static/css/core/footer.css">
+  <link rel="stylesheet" href="/Market/static/css/core/nav.css">
+
+  <title>Admin Home Page</title>
+</head>
+
+<body>
+  <nav class="navbar">
+    <div class="nav">
+      <img src="img/logo.jpg" alt="lolo" class="site-logo">
+      <div class="nav-items">
+        <div class="search">
+          <input type="text" class="search-box" placeholder="search product">
+          <button class="search-button">search</button>
+
+        </div>
+        <div class="sign">
+          <button class="signs-btn"><a href="#">sign up</a></button>
+          <button class="signs-btn"><a href="#">sign in</a></button>
+        </div>
+        <div class="notification">
+          <i class="fa fa-bell fa-2x"></i>
+        </div>
+
+      </div>
+
+
+    </div>
+    <ul class="links-container">
+      <li class="link-item"><a href="#" class="link">home</a></li>
+      <li class="link-item"><a href="#" class="link">cloths</a></li>
+      <li class="link-item"><a href="#" class="link">electronics</a></li>
+
+    </ul>
+
+  </nav>
+
+  <!-- *********************************************************** -->
+  <section class="container">
+    <div class="charts">
+      <div class="analysis">
+        <div class="barChart chart">
+          <canvas id="myBarChart"></canvas>
+        </div>
+        <p class="barAnalytics chartAnalytics">This Charts Indecates the Number of Users Using the web system<br>
+          - Regular users are the Main users as they are 516 user, <br>
+          - Sellers come then as they are 287 seller,<br>
+          - while admins are 14 <br>
+        </p>
+      </div>
+      <div class="analysis">
+        <p class="pieAnalytics chartAnalytics">This Charts Indecates the Number of Users Using the web system<br>
+          - Regular users are the Main users as they are 516 user, <br>
+          - Sellers come then as they are 287 seller,<br>
+          - while admins are 14 <br>
+        </p>
+        <div class="pieChart chart">
+          <canvas id="myPieChart"></canvas>
+        </div>
+      </div>
+    </div>
+    <div class="main">
+      <a href="#">
+        <center>
+          <div class="content_img"><img class="mainImage" src="assets\images\users.png" alt="">
+            <div class="overlay">
+              <div class="text">Users</div>
+            </div>
+          </div>
+        </center>
+      </a>
+      <a href="#">
+        <center>
+          <div class="content_img"><img class="mainImage" src="assets\images\products.jpg" alt="">
+            <div class="overlay">
+              <div class="text">Products</div>
+            </div>
+          </div>
+        </center>
+      </a>
+      <a href="#">
+        <center>
+          <div class="content_img"><img class="mainImage" src="assets\images\reports.png" alt="">
+            <div class="overlay">
+              <div class="text">Reports</div>
+            </div>
+          </div>
+        </center>
+      </a>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer">
+        <img src="img/logo.jpg" class="logo" alt="">
+        <div class="footer-ul-container">
+            <ul class="category">
+                <li class="category-title">clothes</li>
+                <li><a href="#" class="footer-link">dresses</a></li>
+                <li><a href="#" class="footer-link">shirts</a></li>
+                <li><a href="#" class="footer-link">jeans</a></li>
+                <li><a href="#" class="footer-link">shoes</a></li>
+                <li><a href="#" class="footer-link">watch</a></li>
+            </ul>
+            <ul class="category">
+                <li class="category-title">electronics</li>
+                <li><a href="#" class="footer-link">televisions</a></li>
+                <li><a href="#" class="footer-link">computers</a></li>
+                <li><a href="#" class="footer-link">headphones</a></li>
+                <li><a href="#" class="footer-link">camera</a></li>
+            </ul>
+        </div>
+        <div class="about">
+            <p class="footer-title">about company</p>
+            <p class="info">provide ay nininini which customer need :)</p>
+            <p class="info">support email - customersupport@nininini.com</p>
+            <p class="info">telephone - +2011345677</p>
+        </div>
+        <div class="footer-social-container">
+            <a href="#" class="social-link">instagram</a>
+            <a href="#" class="social-link">facebook</a>
+            <a href="#" class="social-link">twitter</a>
+        </div>
+    </div>
+</footer>
+
+  <script src="/static/js/core/chart.min.js"></script>
+  <script src="/static/js/core/charts-scripts.js"></script>
+
+</body>
+
+</html>
