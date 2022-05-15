@@ -1,3 +1,4 @@
+from asyncio.windows_events import NULL
 from unicodedata import name
 from django.db import models
 from products.models import Product
@@ -6,5 +7,5 @@ from products.models import Product
 
 class Cart(models.Model):
     cartName=models.CharField(max_length=30, default="My Cart")
-    cartProducts=models.ForeignKey(Product,on_delete=models.PROTECT)
+    cartProducts=models.ForeignKey(Product,on_delete=models.PROTECT,default=NULL)
 

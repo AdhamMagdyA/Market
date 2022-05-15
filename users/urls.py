@@ -1,11 +1,15 @@
+from unicodedata import name
 from django.urls import path
 from . import views
 
 # define namespace for the app
 
 urlpatterns = [
-    path('signupBusiness', views.signupBusiness, name='signupBusiness'),
     path('signup', views.signup,name='signup'),
-    path('login', views.login, name='login'),
+    path('userhome',views.user_home,name='userhome'),
 
+
+
+    #####
+    path('adminhome',views.admin_home,name='adminhome')
 ]

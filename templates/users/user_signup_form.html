@@ -9,7 +9,7 @@
         <meta lang="en">
         <title>Sign In</title>
         <meta name="description" content="Create a Profile at Amazone Website">
-        <link rel="stylesheet" href="{% static 'css\sign_log_forms\user_signup_form.css' %}">
+        <link rel="stylesheet" href="{% static 'css\users\user_signup_form.css' %}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,8 +27,8 @@
           <div class="title_container">
             <h2>User SignUP</h2>
           </div>
-            <form>
-
+            <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
               <div >
                 <label class="input_lables">First Name</label>
                 <input type="text" name="first_name" placeholder="First Name" required />
@@ -68,7 +68,7 @@
                 <div class="img_container">
                   
                   <img id="img_btn-img_container" />
-                  <input type="file", id="img_btn" name="fileName" accept="images/*" hidden onchange="showPreview(event);"/>
+                  <input type="file", id="img_btn" name="upload" accept="images/*" hidden onchange="showPreview(event);"/>
                   <label type="submit" class="btn" for="img_btn"><i class="fa fa-plus"></i></label>
                 </div>
               </div>
@@ -84,17 +84,17 @@
 
               <h5>Interested Categories</h5>
               <div class="input_field checkbox_option">
-                  <input type="checkbox" id="cb1" >
+                  <input type="checkbox" id="cb1" name="choices">
                   <label for="cb1">Electronics</label>
               </div>
 
 
               <div class="input_field checkbox_option">
-                  <input type="checkbox" id="cb2">
+                  <input type="checkbox" id="cb2" name="choices">
                   <label for="cb2">House</label>
               </div>
               <div class="input_field checkbox_option">
-                <input type="checkbox" id="cb3">
+                <input type="checkbox" id="cb3" name="choices">
                 <label for="cb3">Clothes</label>
               </div>
 
