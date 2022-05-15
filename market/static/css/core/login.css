@@ -1,0 +1,102 @@
+
+body{
+    background-color: rgb(255, 255, 255);
+    font-family: 'Roboto', sans-serif;
+    position: center;
+    height: 600px;
+}
+
+.main{
+    height: 400px;
+    margin: auto;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+.outside {
+    position: center;
+    text-align: center;
+    font-size: 13;
+    font-weight: 700;
+    margin: 15px;
+}
+
+p.outside{
+    color: rgb(89, 88, 88);
+}
+
+p.outside a{
+    color: rgb(250, 196, 0);
+}
+
+
+.form_container{
+    width: 600;
+    height: 300px;
+    border:0.5px solid rgb(215, 215, 215);
+    border-radius: 3px;
+    margin: auto;
+}
+
+form{
+    margin-left: 15;
+}
+
+form label{
+    display: flex;
+    margin-top: 20;
+    font-size: 18;
+    font-weight: bolder;
+}
+
+input [type="password"], [type="email"],.pass {
+    height: 35px;
+    line-height: 35px;
+    width: 96%;
+    cursor:text;
+    color: rgb(72, 72, 72);
+    /* color: #3C162F;  */
+    font-size: 14px;
+    margin-top: 5px;
+    padding: 6px 10px 6px 10px;
+    outline-color: rgb(255, 196, 0);
+    border: 1.3px solid #cccccc;
+    box-sizing: border-box;
+    background-color: -internal-light-dark(rgb(255, 255, 255), rgb(59, 59, 59));
+    appearance:auto;
+    letter-spacing: 1px;
+}
+
+
+h2{
+    font-weight: 900;
+    text-align: center;
+    padding-top: 6;
+    padding-bottom: 10;
+    font-family: 'DM Sans', sans-serif;
+}
+
+
+.input_field label{
+    display: inline-block;
+    color: rgb(57, 57, 57);
+    font-size: 15;
+}
+
+
+
+input[type="submit"] {
+    margin-top: 15;
+    height: 35px;
+    line-height: 35px;
+    width: 96%;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-size: 1.1em;
+    margin-bottom: 10px;
+    background: rgb(245, 186, 26);
+    border-style: none;
+}
+
+sup{
+    color: red;
+}

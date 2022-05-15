@@ -1,0 +1,57 @@
+{% extends 'core/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta lang="en">
+        <title>Sign In</title>
+        <meta name="description" content="Log in to Amazone Website">
+        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css\core\login.css' %}">
+        <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+
+    </head>
+    <body>
+      <div class="main">
+        <div class="form_container">
+          <div class="title_container">
+            <h2>LogIn</h2>
+          </div>
+            <form method='POST'>
+              {% csrf_token %}
+
+              <div>
+                <label class="input_lables">Email</label>
+                <input type="email" name="email" placeholder="name@gmail.com" required />
+                <!-- <p class="guides">Valid e_mail, example@gmail.com <sup>*</sup></p> -->
+              </div>
+
+
+              <div>
+                <label class="input_lables">Password</label>
+                <input class="pass" type="password" name="password" placeholder="********" required />
+                <!-- <p class="guides">Password should be 8 charcters or more<sup>*</sup></p> -->
+              </div>
+
+              <!-- <a href="{% url 'home' %}"> -->
+              <input class="button" type="submit" value="LogIn" />
+              {% for m in messages %}
+                <p>{{m}}</p>
+              {% endfor %}
+
+            </form>
+          </div>
+
+          <p class="outside">Need to Create an account? <a href="{% url 'signup'%}">SignUp here</a></p>
+          
+
+      </div>
+    </body>
+</html>
+
+{% endblock %}
