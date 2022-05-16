@@ -107,10 +107,12 @@ a:hover {
     max-width: 100%;
 }
 
-.section-products .single-product:hover .productImg {
+
+
+/* .section-products .single-product:hover .productImg {
     transition: .5s;
     transform: rotate(360deg);
-}
+} */
 
 .section-products .single-product .part-1 ul li a {
     display: inline-block;
@@ -181,10 +183,11 @@ a:hover {
     color: #3c162f;
 }
 
-.pagination a:hover {
+.pagination a:hover, .active-pagination {
     color: white;
     background-color: #fdaf01;
 }
+
 
 .card-btn {
     position: absolute;

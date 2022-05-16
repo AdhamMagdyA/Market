@@ -19,13 +19,16 @@
             <section class="section-products">
                 <div class="container">
                     <div class="row">
+                        {% for product in current_page.object_list %}
                         <!-- Single Product -->
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div id="product-1" class="single-product">
 
                                 <div class="part-1">
                                     <span class="new">new</span>
-                                    <span class="discount">15% off</span>
+                                    {% if product.productOldPrice %}
+                                    <span class="discount">- {{product.discount}}%</span>
+                                    {% endif %}
                                     <img class="productImg" src=" https://img.ltwebstatic.com/images3_pi/2021/03/02/16146694366d5bba8666f3a707ef384013c8bbbdae_thumbnail_405x552.webp " class="product-thumb ">
                                     <button class="card-btn2 ">Details</button>
                                     <button class="card-btn ">add to whislist</button>
@@ -33,169 +36,51 @@
 
                                 </div>
                                 <div class="part-2 ">
-                                    <h3 class="product-title ">Here Product Title</h3>
-                                    <h4 class="product-old-price ">$79.99</h4>
-                                    <h4 class="product-price ">$49.99</h4>
+                                    <h3 class="product-title ">{{product.productName}}</h3>
+                                    <h4 class="product-old-price ">${{product.productOldPrice}}</h4>
+                                    <h4 class="product-price ">${{product.productPrice}}</h4>
                                 </div>
                             </div>
                         </div>
-                        <!-- Single Product -->
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div id="product-1" class="single-product">
-
-                                <div class="part-1">
-                                    <span class="new">new</span>
-                                    <span class="discount">15% off</span>
-                                    <img class="productImg" src=" https://img.ltwebstatic.com/images3_pi/2021/03/02/16146694366d5bba8666f3a707ef384013c8bbbdae_thumbnail_405x552.webp " class="product-thumb ">
-                                    <button class="card-btn2 ">Details</button>
-                                    <button class="card-btn ">add to whislist</button>
-                                </div>
-                                <div class="part-2 ">
-                                    <h3 class="product-title ">Here Product Title</h3>
-                                    <h4 class="product-old-price ">$79.99</h4>
-                                    <h4 class="product-price ">$49.99</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Product -->
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div id="product-1" class="single-product">
-
-                                <div class="part-1">
-                                    <span class="new">new</span>
-                                    <span class="discount">15% off</span>
-                                    <img class="productImg" src=" https://img.ltwebstatic.com/images3_pi/2021/03/02/16146694366d5bba8666f3a707ef384013c8bbbdae_thumbnail_405x552.webp " class="product-thumb ">
-                                    <button class="card-btn2 ">Details</button>
-                                    <button class="card-btn ">add to whislist</button>
-
-
-                                </div>
-                                <div class="part-2 ">
-                                    <h3 class="product-title ">Here Product Title</h3>
-                                    <h4 class="product-old-price ">$79.99</h4>
-                                    <h4 class="product-price ">$49.99</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Product -->
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div id="product-1" class="single-product">
-
-                                <div class="part-1">
-                                    <span class="new">new</span>
-                                    <span class="discount">15% off</span>
-                                    <img class="productImg" src=" https://img.ltwebstatic.com/images3_pi/2021/03/02/16146694366d5bba8666f3a707ef384013c8bbbdae_thumbnail_405x552.webp " class="product-thumb ">
-                                    <button class="card-btn2 ">Details</button>
-                                    <button class="card-btn ">add to whislist</button>
-
-
-                                </div>
-                                <div class="part-2 ">
-                                    <h3 class="product-title ">Here Product Title</h3>
-                                    <h4 class="product-old-price ">$79.99</h4>
-                                    <h4 class="product-price ">$49.99</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Product -->
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div id="product-1" class="single-product">
-
-                                <div class="part-1">
-                                    <span class="new">new</span>
-                                    <span class="discount">15% off</span>
-                                    <img class="productImg" src=" https://img.ltwebstatic.com/images3_pi/2021/03/02/16146694366d5bba8666f3a707ef384013c8bbbdae_thumbnail_405x552.webp " class="product-thumb ">
-                                    <button class="card-btn2 ">Details</button>
-                                    <button class="card-btn ">add to whislist</button>
-
-
-                                </div>
-                                <div class="part-2 ">
-                                    <h3 class="product-title ">Here Product Title</h3>
-                                    <h4 class="product-old-price ">$79.99</h4>
-                                    <h4 class="product-price ">$49.99</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Product -->
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div id="product-1" class="single-product">
-
-                                <div class="part-1">
-                                    <span class="new">new</span>
-                                    <span class="discount">15% off</span>
-                                    <img class="productImg" src=" https://img.ltwebstatic.com/images3_pi/2021/03/02/16146694366d5bba8666f3a707ef384013c8bbbdae_thumbnail_405x552.webp " class="product-thumb ">
-                                    <button class="card-btn2 ">Details</button>
-                                    <button class="card-btn ">add to whislist</button>
-
-
-                                </div>
-                                <div class="part-2 ">
-                                    <h3 class="product-title ">Here Product Title</h3>
-                                    <h4 class="product-old-price ">$79.99</h4>
-                                    <h4 class="product-price ">$49.99</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Product -->
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div id="product-1" class="single-product">
-
-                                <div class="part-1">
-                                    <span class="new">new</span>
-                                    <span class="discount">15% off</span>
-                                    <img class="productImg" src=" https://img.ltwebstatic.com/images3_pi/2021/03/02/16146694366d5bba8666f3a707ef384013c8bbbdae_thumbnail_405x552.webp " class="product-thumb ">
-                                    <button class="card-btn2 ">Details</button>
-                                    <button class="card-btn ">add to whislist</button>
-
-
-                                </div>
-                                <div class="part-2 ">
-                                    <h3 class="product-title ">Here Product Title</h3>
-                                    <h4 class="product-old-price ">$79.99</h4>
-                                    <h4 class="product-price ">$49.99</h4>
-                                </div>
-                            </div>
-                        </div>
-                        <!-- Single Product -->
-                        <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div id="product-1" class="single-product">
-
-                                <div class="part-1">
-                                    <span class="new">new</span>
-                                    <span class="discount">15% off</span>
-                                    <img class="productImg" src=" https://img.ltwebstatic.com/images3_pi/2021/03/02/16146694366d5bba8666f3a707ef384013c8bbbdae_thumbnail_405x552.webp " class="product-thumb ">
-                                    <button class="card-btn2 ">Details</button>
-                                    <button class="card-btn ">add to whislist</button>
-
-
-                                </div>
-                                <div class="part-2 ">
-                                    <h3 class="product-title ">Here Product Title</h3>
-                                    <h4 class="product-old-price ">$79.99</h4>
-                                    <h4 class="product-price ">$49.99</h4>
-                                </div>
-                            </div>
-                        </div>
-
-
+                        <!-------------------->
+                        {% endfor %}
+                    </div>
+                </div>
             </section>
         </section>
         <nav aria-label="Page navigation example">
             <ul class="pagination justify-content-center" id="pagination">
-                <li class="page-item disabled">
-                    <a class="page-link" href="#" tabindex="-1">Previous</a>
-                </li>
-                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                {% if current_page.has_previous %}
                 <li class="page-item">
-                    <a class="page-link" href="#">Next</a>
+                    <a class="page-link" href="?page={{ current_page.previous_page_number }}" tabindex="-1">Previous</a>
                 </li>
+                {% endif %}
+
+                {% for page in pages %}
+
+                {% if page.number == current_page.number %} 
+                    <li class="page-item"> 
+                        <a class="page-link active-pagination" href="?page={{ page.number }}">{{ page.number }}</a>
+                    </li>
+                {% else %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ page.number }}">{{ page.number }}</a>
+                    </li>
+                {% endif %}
+                {% endfor %}
+                <!-- <li class="page-item"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li> -->
+
+                {% if current_page.has_next %}
+                <li class="page-item">
+                    <a class="page-link" href="?page={{ current_page.next_page_number }}">Next</a>
+                </li>
+                {% endif %}
             </ul>
         </nav>
     <!-- isn't static tag should be written here  -->
-    <script src="js/home.js "></script>
+    <script src="{% static 'js/core/home.js' %} "></script>
 
     </body>
 </html>

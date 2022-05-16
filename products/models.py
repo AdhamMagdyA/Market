@@ -20,6 +20,13 @@ class Product(models.Model):
     productImage=models.ImageField(upload_to=('photos/%y/%m/%d'),default='media/productPic.jpg', null=True) #check media, put defalt photo
     uploadingDate=models.DateField(default= datetime.now)
     productPrice=models.DecimalField(max_digits=8, decimal_places=2)
+    productOldPrice=models.DecimalField(max_digits=8, decimal_places=2, null=True)
+    # calculate discount from productOldPrice and productPrice
+    def discount(self):
+        if self.productOldPrice:
+            return int(round(((self.productOldPrice-self.productPrice)/self.productOldPrice)*100,2))
+        else:
+            return 0
     productActivation=models.BooleanField(default=False)
     category=models.ForeignKey(Category, on_delete=models.PROTECT,default=DEFAULT_CASE)
     def __str__(self):
