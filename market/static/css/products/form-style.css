@@ -1,0 +1,155 @@
+.nav {
+    height: 40px;
+    background-color: #3c162f;
+    color: wheat;
+    text-align: center;
+}
+body{
+    font-family: 'Open Sans',sans-serif;
+}
+form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 2px solid gainsboro;
+    padding: 20px;
+    margin-top: 20px;
+    display: block;
+    width: 500px;
+}
+
+#form-title {
+    font-size: large;
+    margin: 20px;
+    margin-bottom: 30px;
+}
+
+input {
+    width: 90%;
+    padding: 2px 10px;
+    margin: 4px;
+    box-sizing: border-box;
+    border: 0pt;
+    border-bottom: 4px solid yellow;
+    border-radius: 4px;
+}
+
+
+input:focus {
+    background-color: transparent;
+    outline: 0px;
+    border-color: purple;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+    -moz-appearance: textfield;
+}
+
+input[type=radio] {
+    width: auto;
+    accent-color: purple;
+}
+
+#choice {
+    padding-right: 20px;
+    display: unset;
+}
+
+button {
+    background-color: rgba(239, 239, 53, 0.721);
+    font-weight: bold;
+    float: right;
+    margin: 8px;
+    padding: 12px 20px;
+    border: none;
+    width: 100%;
+}
+
+button:hover {
+    color: white;
+    background-color: purple;
+    border-color: transparent;
+}
+
+#field {
+    align-self: center;
+    padding: 10px;
+    padding-bottom:20px ;
+    position: relative;
+}
+small {
+    visibility: hidden;
+    bottom: 0;
+    left: 0;
+}
+.form-control.success input{
+    border-bottom: 2px solid rgba(0, 255, 140, 0.358);
+}
+.form-control.success label{
+    color:  rgb(0, 255, 140);
+}
+.form-control.success span{
+    visibility: hidden;
+}
+.form-control.error input{
+    border-bottom: 2px solid rgb(255, 0, 0);
+}
+.form-control.error label{
+    color:  rgb(255, 0, 0);
+}
+.form-control.error small{
+    visibility: visible;
+    color: red;
+    padding-left: 5px;
+}
+.tooltip {
+    position: relative;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 80%;
+    background-color: purple;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 7px;
+    position: absolute;
+    z-index: 5;
+    bottom: 100px;
+    left: -30%;
+    transition: opacity 1s;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 0.7;
+  }
+#note {
+    color: gray;
+    padding: 8px;
+}
+
+#required-field {
+    color: red;
+}
