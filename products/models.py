@@ -1,6 +1,8 @@
 from cgitb import small
 from datetime import datetime
 from django.db import models
+
+from sellers.models import Seller
 #####from users.models import User
 
 
@@ -21,6 +23,8 @@ class Product(models.Model):
     uploadingDate=models.DateField(default= datetime.now)
     productPrice=models.DecimalField(max_digits=8, decimal_places=2)
     productOldPrice=models.DecimalField(max_digits=8, decimal_places=2, null=True)
+    # when the login is done we should change the null to false
+    productSeller = models.ForeignKey(Seller, on_delete=models.CASCADE, null=True)
     # calculate discount from productOldPrice and productPrice
     def discount(self):
         if self.productOldPrice:

@@ -26,8 +26,8 @@
           <div class="title_container">
             <h2>Business SignUP</h2>
           </div>
-            <form>
-
+            <form  method="POST" enctype="multipart/form-data" class="registration-form">
+              {% csrf_token %}
               <div >
                 <label class="input_lables">Company Name</label>
                 <input type="text" name="company_name" placeholder="Company Name" required />
@@ -47,7 +47,7 @@
 
               <div>
                 <label class="input_lables margin_textarea">Company Discription</label>
-                <textarea placeholder="Modern Fernture Company Provides ..." maxlength="500"  rows="7" cols="73" ></textarea>
+                <textarea placeholder="Modern Fernture Company Provides ..."  name="company_description" maxlength="500"  rows="7" cols="73" ></textarea>
                 <!-- <input type="text" name="Company Discription" placeholder="Modern Fernture Company Provides ..." required /> -->
               </div>
 
