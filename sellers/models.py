@@ -15,7 +15,7 @@ class Seller (models.Model):
     companyDiscription=models.TextField(default="no discription available", null=True)
     sellerPhoto=models.ImageField('photos/%y/%m/%d', null=True, default='media/profilePic.jpg') #check media, put defalt photo
     sellerProducts=models.ForeignKey(Product,on_delete=models.CASCADE)
-    is_active=models.BooleanField(default=False)
+    is_active=models.BooleanField(default=True)
     last_login=models.DateField(default= datetime.now)
     userAuth=models.ForeignKey(Authorization,on_delete=models.PROTECT,null=True)
 

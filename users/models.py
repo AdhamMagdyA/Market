@@ -16,12 +16,14 @@ class User (models.Model):
     last_name=models.CharField(max_length=25, default=NULL, null=False)
     email=models.EmailField(unique=True, null=False)
     password=models.CharField(max_length=20, null=False)
-    userPhoto=models.ImageField('photos/%y/%m/%d', null=True, default='media/profilePic.jpg') #check media, put defalt photo
+    userPhoto=models.ImageField(upload_to = 'photos/%y/%m/%d', null=True, default='media/profilePic.jpg') #check media, put defalt photo
     userCart=models.OneToOneField(Cart,on_delete=models.CASCADE)
-    preferedUserCategories=models.ForeignKey(Category, on_delete=models.PROTECT, default=DefaultPreCat)
     last_login=models.DateField(default= datetime.now)
-    is_active=models.BooleanField(default=False)
+    is_active=models.BooleanField(default=True)
     userAuth=models.ForeignKey(Authorization,on_delete=models.PROTECT,null=True)
+
+    
+    # preferedUserCategories=models.ForeignKey(Category, on_delete=models.PROTECT, default=DefaultPreCat)
     
 
 

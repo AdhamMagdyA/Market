@@ -7,5 +7,5 @@ from products.models import Product
 
 class Cart(models.Model):
     cartName=models.CharField(max_length=30, default="My Cart")
-    cartProducts=models.ForeignKey(Product,on_delete=models.PROTECT,default=NULL)
+    cartProducts=models.ManyToManyField(Product)
 

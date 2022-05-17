@@ -1,7 +1,9 @@
 import imp
 from unicodedata import name
 from urllib import request
-from django.shortcuts import render
+from django.shortcuts import redirect, render
+
+from carts.models import Cart
 from .models import User
 from products.models import Category
 
@@ -18,16 +20,18 @@ def signup (request):
         lastName= request.POST.get('last_name')
         email= request.POST.get('email')
         password= request.POST.get('password')
-        
-
-        ch= request.POST.getList('choices')
-        print(ch)
-        if ch.lenght >0 :
-         preferedUserCategories=Category.objects.get(name=ch[0])
+        # create new cart and assign it to the user
+        userCart=Cart()
+        userCart.save()
+        # ch= request.POST.getList('choices')
+        # print(ch)
+        #if ch.lenght >0 :
+         #preferedUserCategories=Category.objects.get(name=ch[0])
         fss=FileSystemStorage()
         # file = fss.save(upload.name, upload)
-        data=User(userFirstName=firstName, userLastName=lastName, userEmail=email , userPassword=password, preferedUserCategories=preferedUserCategories)
+        data=User(first_name=firstName, last_name=lastName, email=email, password=password, userCart=userCart, userPhoto=request.FILES['upload'])
         data.save()
+        return redirect('home')
     return render(request, 'users/user_signup_form.html',{})
 
 

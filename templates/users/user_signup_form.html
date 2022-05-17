@@ -23,11 +23,11 @@
       <div class="main">
 
         <p class="outside spacespace">For a <u>Business</u> purpose <a href="{% url 'signupBusiness'%}">SignUp here</a></p>
-        <div class="form_container">
+        <div class="form_container" style="height: fit-content;">
           <div class="title_container">
             <h2>User SignUP</h2>
           </div>
-            <form method="POST" enctype="multipart/form-data">
+            <form method="POST" enctype="multipart/form-data" class="registration-form">
               {% csrf_token %}
               <div >
                 <label class="input_lables">First Name</label>
@@ -68,7 +68,7 @@
                 <div class="img_container">
                   
                   <img id="img_btn-img_container" />
-                  <input type="file", id="img_btn" name="upload" accept="images/*" hidden onchange="showPreview(event);"/>
+                  <input required type="file", id="img_btn" name="upload" accept="images/*" hidden onchange="showPreview(event);"/>
                   <label type="submit" class="btn" for="img_btn"><i class="fa fa-plus"></i></label>
                 </div>
               </div>
@@ -82,24 +82,6 @@
                   <label >Female</label>
               </div>
 
-              <h5>Interested Categories</h5>
-              <div class="input_field checkbox_option">
-                  <input type="checkbox" id="cb1" name="choices">
-                  <label for="cb1">Electronics</label>
-              </div>
-
-
-              <div class="input_field checkbox_option">
-                  <input type="checkbox" id="cb2" name="choices">
-                  <label for="cb2">House</label>
-              </div>
-              <div class="input_field checkbox_option">
-                <input type="checkbox" id="cb3" name="choices">
-                <label for="cb3">Clothes</label>
-              </div>
-
-              <!-- <button class="registerbutton" type="submit"><a href="{% url 'login' %}">Register</a></button> -->
-
               <a href="{% url 'login'%}">
               <input class="button" type="submit" value="Register" />
               </a>
@@ -109,7 +91,31 @@
           <p class="outside">Already have an account? <a href="{% url 'login'%}">login here</a></p>
 
       </div>
+
+      <!-- ajax validation still not working -->
+      <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+      <script src="{% static  'js/core/validate_signup.js' %}"></script> -->
     </body>
 </html>
 
 {% endblock %}
+
+
+<!-- 
+              <h5>Interested Categories</h5>
+              <div class="input_field checkbox_option">
+                  <input type="checkbox" id="cb1" name="choices">
+                  <label for="cb1">Electronics</label>
+              </div> 
+
+
+              <div class="input_field checkbox_option">
+                  <input type="checkbox" id="cb2" name="choices">
+                  <label for="cb2">House</label>
+              </div>
+              <div class="input_field checkbox_option">
+                <input type="checkbox" id="cb3" name="choices">
+                <label for="cb3">Clothes</label>
+              </div> -->
+
+              <!-- <button class="registerbutton" type="submit"><a href="{% url 'login' %}">Register</a></button> -->
