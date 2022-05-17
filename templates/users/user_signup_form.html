@@ -29,6 +29,11 @@
           </div>
             <form method="POST" enctype="multipart/form-data" class="registration-form">
               {% csrf_token %}
+
+              {% if error %}
+                <small style="color:red;">{{error}}</small>
+              {% endif %}
+
               <div >
                 <label class="input_lables">First Name</label>
                 <input type="text" name="first_name" placeholder="First Name" required />
@@ -81,16 +86,23 @@
                   <input type="radio" name="radiogroup1" id="rd2">
                   <label >Female</label>
               </div>
-
-              <a href="{% url 'login'%}">
+              <br>
+              <br>
+              <div class="g-recaptcha brochure__form__captcha" data-sitekey="6LdhO_gfAAAAAHK4fNUnuX4rzMwryaP47AZWjATp"></div>
+              
               <input class="button" type="submit" value="Register" />
-              </a>
             </form>
           </div>
 
+          
+
           <p class="outside">Already have an account? <a href="{% url 'login'%}">login here</a></p>
 
+
       </div>
+
+
+      <script src="https://www.google.com/recaptcha/api.js"></script>
 
       <!-- ajax validation still not working -->
       <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script>

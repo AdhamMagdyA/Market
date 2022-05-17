@@ -1,9 +1,10 @@
 import imp
+from multiprocessing import context
 from unicodedata import name
 from urllib import request
 from django.shortcuts import redirect, render
-
 from carts.models import Cart
+from users.forms import FormWithCaptcha
 from .models import User
 from products.models import Category
 
@@ -15,24 +16,34 @@ from django.core.files.storage import FileSystemStorage
 
 
 def signup (request):
-    if request.method == 'POST' and request.FILES['upload']:
-        firstName= request.POST.get('first_name')
-        lastName= request.POST.get('last_name')
-        email= request.POST.get('email')
-        password= request.POST.get('password')
-        # create new cart and assign it to the user
-        userCart=Cart()
-        userCart.save()
-        # ch= request.POST.getList('choices')
-        # print(ch)
-        #if ch.lenght >0 :
-         #preferedUserCategories=Category.objects.get(name=ch[0])
-        fss=FileSystemStorage()
-        # file = fss.save(upload.name, upload)
-        data=User(first_name=firstName, last_name=lastName, email=email, password=password, userCart=userCart, userPhoto=request.FILES['upload'])
-        data.save()
-        return redirect('home')
-    return render(request, 'users/user_signup_form.html',{})
+    #check if recaptcha was validated
+    if request.method == 'POST':
+        print("POST")
+        recaptcha = request.POST.get('g-recaptcha-response')
+
+        if recaptcha: 
+            print("recaptcha")
+            if request.FILES['upload']:
+                firstName= request.POST.get('first_name')
+                lastName= request.POST.get('last_name')
+                email= request.POST.get('email')
+                password= request.POST.get('password')
+                # create new cart and assign it to the user
+                userCart=Cart()
+                userCart.save()
+                # ch= request.POST.getList('choices')
+                # print(ch)
+                #if ch.lenght >0 :
+                #preferedUserCategories=Category.objects.get(name=ch[0])
+                fss=FileSystemStorage()
+                # file = fss.save(upload.name, upload)
+                data=User(first_name=firstName, last_name=lastName, email=email, password=password, userCart=userCart, userPhoto=request.FILES['upload'])
+                data.save()
+                return redirect('home')
+        else:
+            print("recaptcha not validated")
+            return render(request, 'users/user_signup_form.html', {'error': 'Please check the recaptcha'})
+    return render(request, 'users/user_signup_form.html')
 
 
 def user_home (request):

@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'carts.apps.CartsConfig',
     'users.apps.UsersConfig',
     'sellers.apps.SellersConfig',
+    'captcha',
 
 ]
 
@@ -141,3 +142,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 AUTHENTICATION_BACKENDS = ['core.backends.NormalUserBackend','core.backends.SuperUserBackend','django.contrib.auth.backends.ModelBackend', 'core.backends.SellerBackend']
+
+
+RECAPTCHA_PUBLIC_KEY = '6LdhO_gfAAAAAHK4fNUnuX4rzMwryaP47AZWjATp'
+RECAPTCHA_PRIVATE_KEY = '6LdhO_gfAAAAAFyeF0-k1B6pmlpmukr2plkNe2ru'
