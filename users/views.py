@@ -4,7 +4,6 @@ from unicodedata import name
 from urllib import request
 from django.shortcuts import redirect, render
 from carts.models import Cart
-from users.forms import FormWithCaptcha
 from .models import User
 from products.models import Category
 
@@ -18,11 +17,8 @@ from django.core.files.storage import FileSystemStorage
 def signup (request):
     #check if recaptcha was validated
     if request.method == 'POST':
-        print("POST")
         recaptcha = request.POST.get('g-recaptcha-response')
-
         if recaptcha: 
-            print("recaptcha")
             if request.FILES['upload']:
                 firstName= request.POST.get('first_name')
                 lastName= request.POST.get('last_name')
