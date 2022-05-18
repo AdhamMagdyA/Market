@@ -20,6 +20,8 @@ class Seller (models.Model):
     is_active=models.BooleanField(default=True)
     last_login=models.DateField(default= datetime.now)
     userAuth=models.ForeignKey(Authorization,on_delete=models.PROTECT,null=True)
+    def __str__(self):
+        return self.companyName
 
     
     def check_password(self,password,**kwargs):

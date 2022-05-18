@@ -1,18 +1,24 @@
+from cgitb import strong
 import imp
 from multiprocessing import context
 from unicodedata import name
 from urllib import request
+from django.conf import settings
 from django.shortcuts import redirect, render
 from carts.models import Cart
 from core.models import Authorization
 from .models import User
 from products.models import Category
-
-
+from market.settings import EMAIL_HOST_USER
+from django.core.mail import EmailMultiAlternatives
 from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 
+def generateRondamPassword():
+    import random
+    import string
+    return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(8))
 
 
 def signup (request):
@@ -24,16 +30,24 @@ def signup (request):
                 firstName= request.POST.get('first_name')
                 lastName= request.POST.get('last_name')
                 email= request.POST.get('email')
-                password= request.POST.get('password')
+                password= generateRondamPassword()
                 # create new cart and assign it to the user
                 userCart=Cart()
                 userCart.save()
                 type=Authorization.objects.get(auth_name="user")
                 data=User(first_name=firstName, last_name=lastName, email=email, password=password, userCart=userCart, userPhoto=request.FILES['upload'], userAuth=type)
                 data.save()
-                return redirect('login')
+                #send email to the user
+                subject = 'Welcome '+firstName+' in Souq Market'
+                message = 'Hope you are enjoying your account with us. Your password is: ' + password + " you can login to your account and reset your password in your profile page thank you. Souq Market admins team."
+                htmlMessage="<h1>Welcome "+firstName+" in Souq Market.</h1><br><h2><p>Hope you are enjoying your account with us.</p> Your password is:</h2><h1> " + password + "</h1> <h2><p>you can login to your account and reset your password in your profile page thank you.</p></h2> <h4>Souq Market admins team.</h4>"
+                to = str(email)
+                mail=EmailMultiAlternatives(subject,message,EMAIL_HOST_USER, [to])
+                mail.attach_alternative(htmlMessage, "text/html")
+                mail.send()
+                return render(request,'core/login.html',{'message': 'You have successfully registered. Please check your email to get your password.'})
+
         else:
-            print("recaptcha not validated")
             return render(request, 'users/user_signup_form.html', {'error': 'Please check the recaptcha'})
     return render(request, 'users/user_signup_form.html')
 
