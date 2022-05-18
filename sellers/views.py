@@ -1,5 +1,6 @@
+import imp
 from django.shortcuts import render, redirect
-
+from core.models import Authorization
 from sellers.models import Seller
 
 # Create your views here.
@@ -14,9 +15,10 @@ def signupBusiness (request):
                 taxNumber = request.POST.get('Com-Num')
                 companyDescription = request.POST.get('company_description')
                 password= request.POST.get('password')
-                data=Seller(companyName=companyName, email=email, taxNumber=taxNumber, companyDiscription=companyDescription, password=password, sellerPhoto=request.FILES['fileName'])
+                type=Authorization.objects.get(auth_name="seller")
+                data=Seller(companyName=companyName, email=email, taxNumber=taxNumber, companyDiscription=companyDescription, password=password, sellerPhoto=request.FILES['fileName'],userAuth=type)
                 data.save()
-                return redirect('home')
+                return redirect('login')
         else:
             return render(request, 'sellers/business_signup.html', {'error': 'Please check the recaptcha'})
     return render(request, 'sellers/business_signup.html',{})

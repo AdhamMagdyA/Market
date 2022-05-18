@@ -4,6 +4,7 @@ from unicodedata import name
 from urllib import request
 from django.shortcuts import redirect, render
 from carts.models import Cart
+from core.models import Authorization
 from .models import User
 from products.models import Category
 
@@ -27,15 +28,10 @@ def signup (request):
                 # create new cart and assign it to the user
                 userCart=Cart()
                 userCart.save()
-                # ch= request.POST.getList('choices')
-                # print(ch)
-                #if ch.lenght >0 :
-                #preferedUserCategories=Category.objects.get(name=ch[0])
-                fss=FileSystemStorage()
-                # file = fss.save(upload.name, upload)
-                data=User(first_name=firstName, last_name=lastName, email=email, password=password, userCart=userCart, userPhoto=request.FILES['upload'])
+                type=Authorization.objects.get(auth_name="user")
+                data=User(first_name=firstName, last_name=lastName, email=email, password=password, userCart=userCart, userPhoto=request.FILES['upload'], userAuth=type)
                 data.save()
-                return redirect('home')
+                return redirect('login')
         else:
             print("recaptcha not validated")
             return render(request, 'users/user_signup_form.html', {'error': 'Please check the recaptcha'})
@@ -49,7 +45,7 @@ def user_home (request):
 
 
 def admin_home (request):
-    return render(request, 'users/admin_home.html',{})
+    return render(request, 'admins/admin_home.html',{})
 
 
 
@@ -67,6 +63,11 @@ def admin_home (request):
 
 
 
+        
+        # ch= request.POST.getList('choices')
+        # print(ch)
+        #if ch.lenght >0 :
+        #preferedUserCategories=Category.objects.get(name=ch[0])
 
         # ch= request.POST.get('cb1')
         # ch1=Category.objects.contains(ch)

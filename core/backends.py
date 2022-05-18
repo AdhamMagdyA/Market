@@ -73,19 +73,13 @@ class SellerBackend(ModelBackend):
             if seller.check_password(password) and self.user_can_authenticate(seller):
                 print('passed user_can_authenticate seller function')
                 if seller.is_active == True:
-                    print('seller is active')
-                    print(seller.username)
                     return seller
 
     
     def get_user(self, user_id):
-        print('entered ?')
         try:
-            print('entered ?')
             seller=Seller.objects.get(pk=user_id)
         except:
-            print('return None')
             return None
-        print('seller found')
         return seller if self.user_can_authenticate else None
 

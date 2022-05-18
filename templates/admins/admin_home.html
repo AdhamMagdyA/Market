@@ -1,6 +1,10 @@
+{% extends 'core/base.html' %}
+
 <!DOCTYPE html>
 <html lang="en">
+{% load static %}
 
+{% block content %}
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,35 +18,6 @@
 </head>
 
 <body>
-  <nav class="navbar">
-    <div class="nav">
-      <img src="img/logo.jpg" alt="lolo" class="site-logo">
-      <div class="nav-items">
-        <div class="search">
-          <input type="text" class="search-box" placeholder="search product">
-          <button class="search-button">search</button>
-
-        </div>
-        <div class="sign">
-          <button class="signs-btn"><a href="#">sign up</a></button>
-          <button class="signs-btn"><a href="#">sign in</a></button>
-        </div>
-        <div class="notification">
-          <i class="fa fa-bell fa-2x"></i>
-        </div>
-
-      </div>
-
-
-    </div>
-    <ul class="links-container">
-      <li class="link-item"><a href="#" class="link">home</a></li>
-      <li class="link-item"><a href="#" class="link">cloths</a></li>
-      <li class="link-item"><a href="#" class="link">electronics</a></li>
-
-    </ul>
-
-  </nav>
 
   <!-- *********************************************************** -->
   <section class="container">
@@ -137,5 +112,6 @@
   <script src="/static/js/core/charts-scripts.js"></script>
 
 </body>
-
+{% endblock %}
 </html>
+
