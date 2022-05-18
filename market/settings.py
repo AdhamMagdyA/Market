@@ -146,3 +146,11 @@ AUTHENTICATION_BACKENDS = ['core.backends.NormalUserBackend','core.backends.Supe
 
 RECAPTCHA_PUBLIC_KEY = '6LdhO_gfAAAAAHK4fNUnuX4rzMwryaP47AZWjATp'
 RECAPTCHA_PRIVATE_KEY = '6LdhO_gfAAAAAFyeF0-k1B6pmlpmukr2plkNe2ru'
+
+# Email
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = "souqproject67@gmail.com"
+EMAIL_HOST_PASSWORD = "riopjlezcboobnxd"

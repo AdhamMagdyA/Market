@@ -1,113 +1,101 @@
-{% extends 'core/base.html' %}
-{% load static %}
-
-{% block content %}
+{% extends 'core/base.html' %} {% load static %} {% block content %}
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8">
-        <meta lang="en">
-        <title>Sign In</title>
-        <meta name="description" content="Create a Profile at Amazone Website">
-        <link rel="stylesheet" href="{% static 'css\users\user_signup_form.css' %}">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-        <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+
+<head>
+    <meta charset="utf-8">
+    <meta lang="en">
+    <title>Sign In</title>
+    <meta name="description" content="Create a Profile at Amazone Website">
+    <link rel="stylesheet" href="{% static 'css\users\user_signup_form.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.sandbox.google.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
 
 
-    </head>
-    <body>
-      <div class="main">
+</head>
+
+<body>
+    <div class="main">
 
         <p class="outside spacespace">For a <u>Business</u> purpose <a href="{% url 'signupBusiness'%}">SignUp here</a></p>
         <div class="form_container" style="height: fit-content;">
-          <div class="title_container">
-            <h2>User SignUP</h2>
-          </div>
+            <div class="title_container">
+                <h2>User SignUP</h2>
+            </div>
             <form method="POST" enctype="multipart/form-data" class="registration-form">
-              {% csrf_token %}
+                {% csrf_token %} {% if error %}
+                <small style="color:red;">{{error}}</small> {% endif %}
 
-              {% if error %}
-                <small style="color:red;">{{error}}</small>
-              {% endif %}
-
-              <div >
-                <label class="input_lables">First Name</label>
-                <input type="text" name="first_name" placeholder="First Name" required />
-                <p class="guides">Type your first name here</p>
-              </div>
-
-              <div >
-                <label class="input_lables">Last Name</label>
-                  <input type="text" name="last_name" placeholder="Last Name" required />
-                  <p class="guides">Type your Last name here</p>
-              </div>
-              
-              <div>
-                <label class="input_lables">Email</label>
-                <input type="email" name="email" placeholder="name@gmail.com" required />
-                <p class="guides">Valid e_mail, example@gmail.com <sup>*</sup></p>
-              </div>
-
-
-
-              <div>
-                <label class="input_lables">Password</label>
-                <input type="password" name="password" placeholder="Password" required />
-                <p class="guides">Password should be 8 charcters or more<sup>*</sup></p>
-              </div>
-
-
-
-              <div>
-                <label class="input_lables re_co">Re-Confirm Password</label>
-                <input type="password" name="password" placeholder="Re-type Password" required />
-                <p class="guides">Please, Refill your password here<sup>*</sup></p>
-              </div>
-
-              <div>
-                <label class="input_lables">Image</label>
-                <div class="img_container">
-                  
-                  <img id="img_btn-img_container" />
-                  <input required type="file", id="img_btn" name="upload" accept="images/*" hidden onchange="showPreview(event);"/>
-                  <label type="submit" class="btn" for="img_btn"><i class="fa fa-plus"></i></label>
+                <div>
+                    <label class="input_lables">First Name</label>
+                    <input type="text" name="first_name" placeholder="First Name" required />
+                    <p class="guides">Type your first name here</p>
                 </div>
-              </div>
+
+                <div>
+                    <label class="input_lables">Last Name</label>
+                    <input type="text" name="last_name" placeholder="Last Name" required />
+                    <p class="guides">Type your Last name here</p>
+                </div>
+
+                <div>
+                    <label class="input_lables">Email</label>
+                    <input type="email" name="email" placeholder="name@gmail.com" required />
+                    <p class="guides">Valid e-mail, example@gmail.com <sup>*</sup></p>
+                </div>
+
+                <div>
+                    <label class="input_lables">Re-Confirm Email</label>
+                    <input type="email" name="email" placeholder="name@gmail.com" required />
+                    <p class="guides">Please, Refill your e-mail, example@gmail.com <sup>*</sup></p>
+                </div>
+
+
+                <div>
+                    <label class="input_lables">Image</label>
+                    <div class="img_container">
+
+                        <img id="img_btn-img_container" />
+                        <input required type="file" , id="img_btn" name="upload" accept="images/*" hidden onchange="showPreview(event);" />
+                        <label type="submit" class="btn" for="img_btn"><i class="fa fa-plus"></i></label>
+                    </div>
+                </div>
 
 
 
-              <div class="input_field radio_option">
-                  <input type="radio" name="radiogroup1" id="rd1">
-                  <label >Male</label>
-                  <input type="radio" name="radiogroup1" id="rd2">
-                  <label >Female</label>
-              </div>
-              <br>
-              <br>
-              <div class="g-recaptcha brochure__form__captcha" data-sitekey="6LdhO_gfAAAAAHK4fNUnuX4rzMwryaP47AZWjATp"></div>
-              
-              <input class="button" type="submit" value="Register" />
+                <div class="input_field radio_option">
+                    <input type="radio" name="radiogroup1" id="rd1">
+                    <label>Male</label>
+                    <input type="radio" name="radiogroup1" id="rd2">
+                    <label>Female</label>
+                </div>
+                <br>
+                <br>
+                <div class="g-recaptcha brochure__form__captcha" data-sitekey="6LdhO_gfAAAAAHK4fNUnuX4rzMwryaP47AZWjATp"></div>
+
+                <input class="button" type="submit" value="Register" />
             </form>
-          </div>
-
-          
-
-          <p class="outside">Already have an account? <a href="{% url 'login'%}">login here</a></p>
+        </div>
 
 
-      </div>
+
+        <p class="outside">Already have an account? <a href="{% url 'login'%}">login here</a></p>
 
 
-      <script src="https://www.google.com/recaptcha/api.js"></script>
+    </div>
 
-      <!-- ajax validation still not working -->
-      <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+
+    <script src="https://www.google.com/recaptcha/api.js"></script>
+
+    <!-- ajax validation still not working -->
+    <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
       <script src="{% static  'js/core/validate_signup.js' %}"></script> -->
-    </body>
+</body>
+
 </html>
 
 {% endblock %}
@@ -130,4 +118,4 @@
                 <label for="cb3">Clothes</label>
               </div> -->
 
-              <!-- <button class="registerbutton" type="submit"><a href="{% url 'login' %}">Register</a></button> -->
+<!-- <button class="registerbutton" type="submit"><a href="{% url 'login' %}">Register</a></button> -->

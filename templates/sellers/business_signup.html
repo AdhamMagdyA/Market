@@ -1,9 +1,7 @@
-{% extends 'core/base.html' %}
-{% load static %}
-
-{% block content %}
+{% extends 'core/base.html' %} {% load static %} {% block content %}
 <DocType!>
-<html>
+    <html>
+
     <head>
         <meta charset="utf-8">
         <meta lang="en">
@@ -19,79 +17,72 @@
 
 
     </head>
+
     <body>
-      <div class="main">
+        <div class="main">
 
-        <div class="form_container" style="height: fit-content;">
-          <div class="title_container">
-            <h2>Business SignUP</h2>
-          </div>
-            <form  method="POST" enctype="multipart/form-data" class="registration-form">
-              {% csrf_token %}
-
-              {% if error %}
-                <small style="color:red;">{{error}}</small>
-              {% endif %}
-
-              <div >
-                <label class="input_lables">Company Name</label>
-                <input type="text" name="company_name" placeholder="Company Name" required />
-                <p class="guides">Type your Company name here</p>
-              </div>
-
-              <div>
-                <label class="input_lables">Email</label>
-                <input type="email" name="email" placeholder="CompanyName@gmail.com" required />
-                <p class="guides">Valid e_mail, example@gmail.com <sup>*</sup></p>
-              </div>
-
-              <div>
-                <label class="input_lables">Tax number</label>
-                <input type="text" name="Com-Num" placeholder="123-456-789" required />
-              </div>
-
-              <div>
-                <label class="input_lables margin_textarea">Company Discription</label>
-                <textarea placeholder="Modern Fernture Company Provides ..."  name="company_description" maxlength="500"  rows="7" cols="73" ></textarea>
-                <!-- <input type="text" name="Company Discription" placeholder="Modern Fernture Company Provides ..." required /> -->
-              </div>
-
-              <div>
-                <label class="input_lables">Password</label>
-                <input type="password" name="password" placeholder="Password" required />
-                <p class="guides">Password should be 8 charcters or more<sup>*</sup></p>
-              </div>
-
-
-
-              <div>
-                <label class="input_lables re_co">Re-Confirm Password</label>
-                <input type="password" name="password" placeholder="Re-type Password" required />
-                <p class="guides">Please, Refill your password here<sup>*</sup></p>
-              </div>
-
-              <div>
-                <label class="input_lables">Logo</label>
-                <div class="img_container">
-                  <input type="file", id="img_btn" name="fileName" hidden/>
-                  <label type="submit" class="btn" for="img_btn"><i class="fa fa-plus"></i></label>
+            <div class="form_container" style="height: fit-content;">
+                <div class="title_container">
+                    <h2>Business SignUP</h2>
                 </div>
-              </div>
-              <br>
-              <div class="g-recaptcha brochure__form__captcha" data-sitekey="6LdhO_gfAAAAAHK4fNUnuX4rzMwryaP47AZWjATp"></div>
+                <form method="POST" enctype="multipart/form-data" class="registration-form">
+                    {% csrf_token %} {% if error %}
+                    <small style="color:red;">{{error}}</small> {% endif %}
 
-              <a href="{% url 'home'%}">
-              <input class="button" type="submit" value="Register" />
-              </a>
-            </form>
-          </div>
+                    <div>
+                        <label class="input_lables">Company Name</label>
+                        <input type="text" name="company_name" placeholder="Company Name" required />
+                        <p class="guides">Type your Company name here</p>
+                    </div>
 
-          <p class="outside">Already have an account? <a href="{% url 'login'%}">login here</a></p>
+                    <div>
+                        <label class="input_lables">Email</label>
+                        <input type="email" name="email" placeholder="CompanyName@gmail.com" required />
+                        <p class="guides">Valid e-mail, example@gmail.com <sup>*</sup></p>
+                    </div>
 
-      </div>
+                    <div>
+                        <label class="input_lables">Re-Confirm Email</label>
+                        <input type="email" name="email" placeholder="CompanyName@gmail.com" required />
+                        <p class="guides">Please, Refill your e-mail, example@gmail.com <sup>*</sup></p>
+                    </div>
 
-      <script src="https://www.google.com/recaptcha/api.js"></script>
+                    <div>
+                        <label class="input_lables">Tax number</label>
+                        <input type="text" name="Com-Num" placeholder="123-456-789" required />
+                    </div>
+
+                    <div>
+                        <label class="input_lables margin_textarea">Company Discription</label>
+                        <textarea placeholder="Modern Fernture Company Provides ..." name="company_description" maxlength="500" rows="7" cols="73"></textarea>
+                        <!-- <input type="text" name="Company Discription" placeholder="Modern Fernture Company Provides ..." required /> -->
+                    </div>
+
+
+
+                    <div>
+                        <label class="input_lables">Logo</label>
+                        <div class="img_container">
+                            <input type="file" , id="img_btn" name="fileName" hidden/>
+                            <label type="submit" class="btn" for="img_btn"><i class="fa fa-plus"></i></label>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="g-recaptcha brochure__form__captcha" data-sitekey="6LdhO_gfAAAAAHK4fNUnuX4rzMwryaP47AZWjATp"></div>
+
+                    <a href="{% url 'home'%}">
+                        <input class="button" type="submit" value="Register" />
+                    </a>
+                </form>
+            </div>
+
+            <p class="outside">Already have an account? <a href="{% url 'login'%}">login here</a></p>
+
+        </div>
+
+        <script src="https://www.google.com/recaptcha/api.js"></script>
     </body>
-</html>
 
-{% endblock %}
+    </html>
+
+    {% endblock %}
