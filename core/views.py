@@ -36,3 +36,9 @@ def login (request):
 def logout(request):
     logout(request)
     return redirect('home')
+
+def userProfile(request):
+    return render(request, 'core/profile_user.html',{})
+
+def userEditProfile(request):
+    return render(request, 'core/user_profile_edit.html',{})

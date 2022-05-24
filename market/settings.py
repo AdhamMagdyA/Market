@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'users.apps.UsersConfig',
     'sellers.apps.SellersConfig',
     'captcha',
+    'django_extensions',
 
 ]
 

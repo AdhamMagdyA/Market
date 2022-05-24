@@ -11,5 +11,8 @@ urlpatterns = [
 
 
     #####
-    path('adminhome',views.admin_home,name='adminhome')
+    path('adminhome',views.admin_home,name='adminhome'),
+    path('adminProfile',views.admin_profile,name='adminProfile'),
+    path('adminProfile/edit',views.admin_profile_edit,name='editAdminProfile'),
+    #####
 ]
