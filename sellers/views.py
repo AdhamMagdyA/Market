@@ -7,7 +7,6 @@ from django.core.mail import EmailMultiAlternatives
 from market.settings import EMAIL_HOST_USER
 
 # Create your views here.
-   
 def signupBusiness (request): 
     if request.method == 'POST' :
         recaptcha = request.POST.get('g-recaptcha-response')

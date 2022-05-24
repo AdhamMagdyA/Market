@@ -61,6 +61,11 @@ def user_home (request):
 def admin_home (request):
     return render(request, 'admins/admin_home.html',{})
 
+def admin_profile (request):
+    return render(request, 'admins/admin_profile.html',{})
+
+def admin_profile_edit (request):
+    return render(request, 'admins/admin_profile_edit.html',{})
 
 
 
