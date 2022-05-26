@@ -4,6 +4,7 @@ from multiprocessing import context
 from unicodedata import name
 from urllib import request
 from django.conf import settings
+from django.http import JsonResponse
 from django.shortcuts import redirect, render
 from carts.models import Cart
 from core.models import Authorization
@@ -12,6 +13,7 @@ from products.models import Category
 from market.settings import EMAIL_HOST_USER
 from django.core.mail import EmailMultiAlternatives
 from django.core.files.storage import FileSystemStorage
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -20,6 +22,14 @@ def generateRondamPassword():
     import string
     return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(8))
 
+@csrf_exempt
+def ajax(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        if User.objects.filter(email=email).exists():
+            return JsonResponse({'exists': True})
+        else:
+            return JsonResponse({'exists': False})
 
 def signup (request):
     #check if recaptcha was validated
