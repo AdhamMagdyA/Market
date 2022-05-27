@@ -1,12 +1,25 @@
 import imp
+from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from core.models import Authorization
 from sellers.models import Seller
 from users.views import generateRondamPassword
 from django.core.mail import EmailMultiAlternatives
 from market.settings import EMAIL_HOST_USER
+from django.views.decorators.csrf import csrf_exempt
+from users.models import User
 
 # Create your views here.
+
+@csrf_exempt
+def ajax(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        if Seller.objects.filter(email=email).exists() | User.objects.filter(email=email).exists():
+            return JsonResponse({'exists': True})
+        else:
+            return JsonResponse({'exists': False})
+
 def signupBusiness (request): 
     if request.method == 'POST' :
         recaptcha = request.POST.get('g-recaptcha-response')

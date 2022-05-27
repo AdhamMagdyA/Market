@@ -25,7 +25,7 @@
                 <div class="title_container">
                     <h2>Business SignUP</h2>
                 </div>
-                <form method="POST" enctype="multipart/form-data" class="registration-form">
+                <form method="POST" enctype="multipart/form-data" class="registration-form" id="signup">
                     {% csrf_token %} {% if error %}
                     <small style="color:red;">{{error}}</small> {% endif %}
 
@@ -35,7 +35,7 @@
                         <p class="guides">Type your Company name here</p>
                     </div>
 
-                    <div>
+                    <div id="email">
                         <label class="input_lables">Email</label>
                         <input type="email" name="email" placeholder="CompanyName@gmail.com" required />
                         <p class="guides">Valid e-mail, example@gmail.com <sup>*</sup></p>
@@ -81,6 +81,7 @@
         </div>
 
         <script src="https://www.google.com/recaptcha/api.js"></script>
+        <script src="{% static 'js/core/validate_signup.js' %}"></script>
     </body>
 
     </html>
