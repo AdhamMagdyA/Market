@@ -1,4 +1,4 @@
-
+email = document.querySelector("#email input");
 
 email.onkeydown = function(e) {
     const regex = /^([\.\_a-zA-Z0-9]+)@([a-zA-Z]+)\.([a-zA-Z]){2,8}$/;
@@ -14,6 +14,7 @@ email.onkeydown = function(e) {
     }
 }
 
+emailVerification = document.querySelector("#emailVerification input");
 
 emailVerification.onkeydown = function(e) {
     
@@ -26,6 +27,22 @@ emailVerification.onkeydown = function(e) {
             document.querySelector("#emailVerification input").style.borderColor = "red";
             document.querySelector("#emailVerification .guides").style.color = "red";
         }
+}
+
+taxNumber = document.querySelector("#taxNumber input");
+
+taxNumber.onkeydown = function(e) {
+    taxNumberValue = taxNumber.value;
+    taxNumberParts = taxNumberValue.split("-");
+    if(taxNumberParts.length == 3){
+        document.querySelector("#taxNumber .guides").innerHTML = "Tax number is valid";
+        document.querySelector("#taxNumber input").style.borderColor = "green";
+        document.querySelector("#taxNumber .guides").style.color = "green";
+    }else{
+        document.querySelector("#taxNumber .guides").innerHTML = "Tax number is invalid";
+        document.querySelector("#taxNumber input").style.borderColor = "red";
+        document.querySelector("#taxNumber .guides").style.color = "red";
+    }
 }
 
 document.getElementById('signup').addEventListener('submit', function(e){
