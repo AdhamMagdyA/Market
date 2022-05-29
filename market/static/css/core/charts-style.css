@@ -44,7 +44,7 @@ position: relative;
 }
 
 .text {
-  color: white;
+  color: rgb(111, 5, 5);
   font-size: 20px;
   position: absolute;
   top: 50%;
@@ -86,13 +86,13 @@ width: auto;
 .charts{
   padding-bottom: 70px;
 }
-footer{
-    background-color: rgba(245, 222, 179, 0.696);
+/* footer{
+    background-color: #3c162f;
     width: 100%;
     height: 400px;
     margin: -7px;
     
-}
+} */
 .main{
   display: inline-flex;
   width: 103%;

@@ -1,20 +1,19 @@
 {% extends 'core/base.html' %}
-
+{% load static %}
+{% block content %}
 <!DOCTYPE html>
 <html lang="en">
-{% load static %}
 
-{% block content %}
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="/Market/static/css/core/charts-style.css">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
-  <link rel="stylesheet" href="/Market/static/css/core/footer.css">
-  <link rel="stylesheet" href="/Market/static/css/core/nav.css">
+  <link rel='stylesheet' href="{% static 'css\core\charts-style.css' %}">
 
   <title>Admin Home Page</title>
+
+  
 </head>
 
 <body>
@@ -27,18 +26,15 @@
           <canvas id="myBarChart"></canvas>
         </div>
         <p class="barAnalytics chartAnalytics">This Charts Indecates the Number of Users Using the web system<br>
-          - Regular users are the Main users as they are 516 user, <br>
-          - Sellers come then as they are 287 seller,<br>
-          - while admins are 14 <br>
+          - Regular users are the Main users as they are {{usersNum}} user, <br>
+          - Sellers come then as they are {{sellersNum}} seller,<br>
+          - while admins are "{{adminsNum}}" <br>
         </p>
       </div>
       <div class="analysis">
-        <p class="pieAnalytics chartAnalytics">This Charts Indecates the Number of Users Using the web system<br>
-          - Regular users are the Main users as they are 516 user, <br>
-          - Sellers come then as they are 287 seller,<br>
-          - while admins are 14 <br>
+        <p class="pieAnalytics chartAnalytics">Favorate Category for our website Customers <br>
         </p>
-        <div class="pieChart chart">
+        <div class="pieChart chart" height="600px" width="600px">
           <canvas id="myPieChart"></canvas>
         </div>
       </div>
@@ -46,7 +42,7 @@
     <div class="main">
       <a href="#">
         <center>
-          <div class="content_img"><img class="mainImage" src="assets\images\users.png" alt="">
+          <div class="content_img"><img class="mainImage" src="{% static 'images\core\users.png'%}" alt="">
             <div class="overlay">
               <div class="text">Users</div>
             </div>
@@ -55,7 +51,7 @@
       </a>
       <a href="#">
         <center>
-          <div class="content_img"><img class="mainImage" src="assets\images\products.jpg" alt="">
+          <div class="content_img"><img class="mainImage" src="{% static 'images\core\products.jpg'%}" alt="">
             <div class="overlay">
               <div class="text">Products</div>
             </div>
@@ -64,7 +60,7 @@
       </a>
       <a href="#">
         <center>
-          <div class="content_img"><img class="mainImage" src="assets\images\reports.png" alt="">
+          <div class="content_img"><img class="mainImage" src="{% static 'images\core\reports.png'%}" alt="">
             <div class="overlay">
               <div class="text">Reports</div>
             </div>
@@ -74,44 +70,92 @@
     </div>
   </section>
 
-  <footer>
-    <div class="footer">
-        <img src="img/logo.jpg" class="logo" alt="">
-        <div class="footer-ul-container">
-            <ul class="category">
-                <li class="category-title">clothes</li>
-                <li><a href="#" class="footer-link">dresses</a></li>
-                <li><a href="#" class="footer-link">shirts</a></li>
-                <li><a href="#" class="footer-link">jeans</a></li>
-                <li><a href="#" class="footer-link">shoes</a></li>
-                <li><a href="#" class="footer-link">watch</a></li>
-            </ul>
-            <ul class="category">
-                <li class="category-title">electronics</li>
-                <li><a href="#" class="footer-link">televisions</a></li>
-                <li><a href="#" class="footer-link">computers</a></li>
-                <li><a href="#" class="footer-link">headphones</a></li>
-                <li><a href="#" class="footer-link">camera</a></li>
-            </ul>
-        </div>
-        <div class="about">
-            <p class="footer-title">about company</p>
-            <p class="info">provide ay nininini which customer need :)</p>
-            <p class="info">support email - customersupport@nininini.com</p>
-            <p class="info">telephone - +2011345677</p>
-        </div>
-        <div class="footer-social-container">
-            <a href="#" class="social-link">instagram</a>
-            <a href="#" class="social-link">facebook</a>
-            <a href="#" class="social-link">twitter</a>
-        </div>
-    </div>
-</footer>
 
-  <script src="/static/js/core/chart.min.js"></script>
-  <script src="/static/js/core/charts-scripts.js"></script>
+  <!-- '#FE3DD1',
+        '#B433B8',
+        '#D1DB44' -->
+  <script src="{% static 'js/core/chart.min.js' %}"></script>
+  <!-- <script src="{% static 'js/core/charts-scripts.js' %}"></script> -->
+  <script>
+    const ctx = document.getElementById('myPieChart');
+    const doughnut = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ["Food","Toys","Kidswear","Menswear","Womenswear","Electronics","Laptops","Phones","Furniture","Kitchen"],
+            datasets: [{
+                label: '# of Votes',
+                data: ["{{soldFood}}","{{soldToys}}","{{soldKidswear}}","{{soldMenswear}}","{{soldWomenswear}}","{{soldElectronics}}","{{soldLaptops}}","{{soldPhones}}","{{soldFurniture}}","{{soldKitchen}}"],
+                backgroundColor: [
+                '#FE3DD1',
+                '#F43DFE',
+                '#C73DFE',
+                '#BC89FF',
+                '#338EB8',
+                '#33B878',
+                '#B433B8',
+                '#F6F33E',
+                '#952057',
+                '#C64A84'
+                ],
+                borderColor: [
+                '#FE3DD1',
+                '#F43DFE',
+                '#C73DFE',
+                '#BC89FF',
+                '#338EB8',
+                '#33B878',
+                '#B433B8',
+                '#F6F33E',
+                '#952057',
+                '#C64A84'
+                ],
+                borderWidth: 1
+            }]
+        },
+        options: {
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+  </script>
+
+<script>
+  const ctx2 = document.getElementById('myBarChart');
+  const bar = new Chart(ctx2, {
+      type: 'bar',
+      data: {
+          labels: ["Customers","Sellers","Admins"],
+          datasets: [{
+              label: '# of Votes',
+              data: ["{{usersNum}}","{{sellersNum}}","{{adminsNum}}"],
+              backgroundColor: [
+                    '#FE3DD1',
+                    '#B433B8',
+                    '#FFEC00',
+                ],
+                borderColor: [
+                    '#FE3DD1',
+                    '#B433B8',
+                    '#FFEC00',
+                ],
+              borderWidth: 1
+          }]
+      },
+      options: {
+          scales: {
+              y: {
+                  beginAtZero: true
+              }
+          }
+      }
+  });
+</script>
 
 </body>
-{% endblock %}
+
 </html>
+{% endblock %}
 
