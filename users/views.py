@@ -1,19 +1,95 @@
-from cgitb import strong
-import imp
-from multiprocessing import context
-from unicodedata import name
-from urllib import request
+
+from email.errors import FirstHeaderLineIsContinuationDefect
 from django.conf import settings
-from django.shortcuts import redirect, render
+from django.shortcuts import render
 from carts.models import Cart
 from core.models import Authorization
 from .models import User
-from products.models import Category
+from sellers.models import Seller
+from products.models import Category,Product
 from market.settings import EMAIL_HOST_USER
 from django.core.mail import EmailMultiAlternatives
-from django.core.files.storage import FileSystemStorage
+from rest_framework.views import APIView
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from django.core import serializers
 
 # Create your views here.
+
+# couldn't make it work :"(
+class AdminCharts(APIView):
+    authentication_classes = []
+    permission_classes = []
+
+    def get(self, request, format=None):
+        print('here 1')
+        
+        usersCount=User.objects.filter(userAuth =Authorization.objects.get(auth_name="user")).count()
+        adminsCount=User.objects.filter(userAuth =Authorization.objects.get(auth_name="admin")).count()
+        sellerCount=Seller.objects.filter(userAuth=Authorization.objects.get(auth_name="seller")).count()
+
+        
+
+        # Second Chart , Favorate Category for Customers
+        soldFood=0
+        soldToys=0
+        soldKidswear=0
+        soldMenswear=0
+        soldWomenswear=0
+        soldElectronics=0
+        soldLaptops=0
+        soldPhones=0
+        soldFurniture=0
+        soldKitchen=0
+
+        products =serializers.serialize( "python", Category.objects.all() )
+        # for cat in categories:
+        #     print(cat)
+
+        # for pro in products:
+        #     print(pro['fields'].get('sold')) 
+
+        for pro in products:
+            if pro['fields'].get('category')==11:
+                soldFood=soldFood+pro['fields'].get('sold')
+            elif pro['fields'].get('category')==10: 
+                soldToys=soldToys+pro['fields'].get('sold')
+            elif pro['fields'].get('category')==9:
+                soldKidswear=soldKidswear+pro['fields'].get('sold')
+            elif pro['fields'].get('category')==8:
+                soldMenswear=soldMenswear+pro['fields'].get('sold')
+            elif pro['fields'].get('category')==7:
+                soldWomenswear=soldWomenswear+pro['fields'].get('sold')
+            elif pro['fields'].get('category')==6:
+                soldElectronics=soldElectronics+pro['fields'].get('sold')
+            elif pro['fields'].get('category')==5:
+                soldLaptops=soldLaptops+pro['fields'].get('sold')
+            elif pro['fields'].get('category')==4:
+                soldPhones=soldPhones+pro['fields'].get('sold')
+            elif pro['fields'].get('category')==3:
+                soldFurniture=soldFurniture+pro['fields'].get('sold')
+            elif pro['fields'].get('category')==2:
+                soldKitchen=soldKitchen+pro['fields'].get('sold')
+                
+
+
+        categoryLables=["Food","Toys","Kidswear","Menswear","Womenswear","Electronics","Laptops","Phones","Furniture","Kitchen"]
+
+        numCatSoldItems=[soldFood,soldToys,soldKidswear,soldMenswear,soldWomenswear,soldElectronics,soldLaptops,soldPhones,soldFurniture,soldKitchen]
+
+        
+        adminChartsData={
+            'usersCount':usersCount,
+            'adminsCount':adminsCount,
+            'sellersCount':sellerCount,
+            'categoryLables':categoryLables,
+            'numCatSoldItems':numCatSoldItems
+
+        }
+        print ("form adminsCharts",adminChartsData)
+        return Response(adminChartsData)
+
+
 
 def generateRondamPassword():
     import random
@@ -59,7 +135,83 @@ def user_home (request):
 
 
 def admin_home (request):
-    return render(request, 'admins/admin_home.html',{})
+    #first chart , our different users number
+    usersNum=User.objects.filter(userAuth =Authorization.objects.get(auth_name="user")).count()
+    adminsNum=User.objects.filter(userAuth =Authorization.objects.get(auth_name="admin")).count()
+    sellerNum=Seller.objects.filter(userAuth=Authorization.objects.get(auth_name="seller")).count()
+
+
+    # Second Chart , Favorate Category for Customers
+    soldFood=0
+    soldToys=0
+    soldKidswear=0
+    soldMenswear=0
+    soldWomenswear=0
+    soldElectronics=0
+    soldLaptops=0
+    soldPhones=0
+    soldFurniture=0
+    soldKitchen=0
+    
+    products = serializers.serialize( "python", Product.objects.all() )
+
+    categories =serializers.serialize( "python", Category.objects.all() )
+    # for cat in categories:
+    #     print(cat)
+
+    # for pro in products:
+    #     print(pro['fields'].get('sold')) 
+
+    for pro in products:
+        if pro['fields'].get('category')==11:
+            soldFood=soldFood+pro['fields'].get('sold')
+        elif pro['fields'].get('category')==10: 
+            soldToys=soldToys+pro['fields'].get('sold')
+        elif pro['fields'].get('category')==9:
+            soldKidswear=soldKidswear+pro['fields'].get('sold')
+        elif pro['fields'].get('category')==8:
+            soldMenswear=soldMenswear+pro['fields'].get('sold')
+        elif pro['fields'].get('category')==7:
+            soldWomenswear=soldWomenswear+pro['fields'].get('sold')
+        elif pro['fields'].get('category')==6:
+            soldElectronics=soldElectronics+pro['fields'].get('sold')
+        elif pro['fields'].get('category')==5:
+            soldLaptops=soldLaptops+pro['fields'].get('sold')
+        elif pro['fields'].get('category')==4:
+            soldPhones=soldPhones+pro['fields'].get('sold')
+        elif pro['fields'].get('category')==3:
+            soldFurniture=soldFurniture+pro['fields'].get('sold')
+        elif pro['fields'].get('category')==2:
+            soldKitchen=soldKitchen+pro['fields'].get('sold')
+        
+
+
+    # categoryLables=["Food","Toys","Kidswear","Menswear","Womenswear","Electronics","Laptops","Phones","Furniture","Kitchen"]
+
+    # numCatSoldItems=[soldFood,soldToys,soldKidswear,soldMenswear,soldWomenswear,soldElectronics,soldLaptops,soldPhones,soldFurniture,soldKitchen]
+
+    adminHomeContext={
+        'usersNum':usersNum,
+        'adminsNum':adminsNum,
+        'sellersNum':sellerNum,
+
+        'soldFood':soldFood,
+        'soldToys':soldToys,
+        'soldKidswear':soldKidswear,
+        'soldMenswear':soldMenswear,
+        'soldWomenswear':soldWomenswear,
+        'soldElectronics':soldElectronics,
+        'soldLaptops':soldLaptops,
+        'soldPhones':soldPhones,
+        'soldFurniture':soldFurniture,
+        'soldKitchen':soldKitchen
+
+        # 'categoryLables':categoryLables,
+        # 'numCatSoldItems':numCatSoldItems
+    }
+    print ("from admin_home : ",adminHomeContext)
+    return render(request, 'admins/admin_home.html',adminHomeContext)
+
 
 def admin_profile (request):
     return render(request, 'admins/admin_profile.html',{})

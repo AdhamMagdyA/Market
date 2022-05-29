@@ -25,6 +25,8 @@ class Product(models.Model):
     productOldPrice=models.DecimalField(max_digits=8, decimal_places=2, null=True)
     # when the login is done we should change the null to false
     productSeller = models.ForeignKey(Seller, on_delete=models.CASCADE, null=True)
+    available=models.DecimalField(max_digits=8,decimal_places=0)
+    sold=models.DecimalField(max_digits=8, decimal_places=0)
     # calculate discount from productOldPrice and productPrice
     def discount(self):
         if self.productOldPrice:
