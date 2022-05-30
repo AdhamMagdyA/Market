@@ -8,6 +8,7 @@ from . import views
 
 urlpatterns = [
     path('signup', views.signup,name='signup'),
+    path('ajax-validation', views.ajax,name='signup_validation'),
     path('userhome',views.user_home,name='userhome'),
 
 

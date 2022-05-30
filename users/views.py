@@ -1,7 +1,8 @@
 
 from email.errors import FirstHeaderLineIsContinuationDefect
 from django.conf import settings
-from django.shortcuts import render
+from django.http import JsonResponse
+from django.shortcuts import redirect, render
 from carts.models import Cart
 from core.models import Authorization
 from .models import User
@@ -13,6 +14,8 @@ from rest_framework.views import APIView
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.core import serializers
+from django.core.files.storage import FileSystemStorage
+from django.views.decorators.csrf import csrf_exempt
 
 # Create your views here.
 
@@ -96,6 +99,14 @@ def generateRondamPassword():
     import string
     return ''.join(random.choice(string.ascii_letters + string.digits) for _ in range(8))
 
+@csrf_exempt
+def ajax(request):
+    if request.method == 'POST':
+        email = request.POST['email']
+        if User.objects.filter(email=email).exists():
+            return JsonResponse({'exists': True})
+        else:
+            return JsonResponse({'exists': False})
 
 def signup (request):
     #check if recaptcha was validated

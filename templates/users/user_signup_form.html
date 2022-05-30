@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta lang="en">
-    <title>Sign In</title>
+    <title>Sign Up</title>
     <meta name="description" content="Create a Profile at Amazone Website">
     <link rel="stylesheet" href="{% static 'css\users\user_signup_form.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -26,7 +26,7 @@
             <div class="title_container">
                 <h2>User SignUP</h2>
             </div>
-            <form method="POST" enctype="multipart/form-data" class="registration-form">
+            <form method="POST" enctype="multipart/form-data" class="registration-form" id="signup">
                 {% csrf_token %} {% if error %}
                 <small style="color:red;">{{error}}</small> {% endif %}
 
@@ -42,13 +42,13 @@
                     <p class="guides">Type your Last name here</p>
                 </div>
 
-                <div>
+                <div id="email">
                     <label class="input_lables">Email</label>
                     <input type="email" name="email" placeholder="name@gmail.com" required />
                     <p class="guides">Valid e-mail, example@gmail.com <sup>*</sup></p>
                 </div>
 
-                <div>
+                <div id="emailVerification">
                     <label class="input_lables">Re-Confirm Email</label>
                     <input type="email" name="email" placeholder="name@gmail.com" required />
                     <p class="guides">Please, Refill your e-mail, example@gmail.com <sup>*</sup></p>
@@ -67,12 +67,6 @@
 
 
 
-                <div class="input_field radio_option">
-                    <input type="radio" name="radiogroup1" id="rd1">
-                    <label>Male</label>
-                    <input type="radio" name="radiogroup1" id="rd2">
-                    <label>Female</label>
-                </div>
                 <br>
                 <br>
                 <div class="g-recaptcha brochure__form__captcha" data-sitekey="6LdhO_gfAAAAAHK4fNUnuX4rzMwryaP47AZWjATp"></div>
@@ -90,6 +84,7 @@
 
 
     <script src="https://www.google.com/recaptcha/api.js"></script>
+    <script src="{% static 'js/core/validate_signup.js' %}"></script>
 
     <!-- ajax validation still not working -->
     <!-- <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
