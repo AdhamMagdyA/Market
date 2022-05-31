@@ -16,5 +16,6 @@ def index(request):
 def add(request):
     return render(request, 'products/add_product.html')
 
-def get(request):
-    return render(request, 'products/product_details.html')
+def get(request,id):
+    product = Product.objects.get(id=id)
+    return render(request, 'products/product_details.html', {'product': product})

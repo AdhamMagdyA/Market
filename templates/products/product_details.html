@@ -19,25 +19,27 @@
             <div class = "product-div">
                 <div class = "product-div-left">
                     <div class = "img-container">
-                        <img src = " {% static 'images/products/OJK8XO0.jpg' %} " alt = "watch">
+                        <img src = " {{product.productImage.url}} " alt = "watch">
                     </div>
-                    <div class = "hover-container">
+                    <!-- <div class = "hover-container">
                         <div><img src = "{% static 'images/products/OJK8XO0.jpg' %}"></div>
                         <div><img src = "{% static 'images/products/OJK8XO0.jpg' %}"></div>
                         <div><img src = "{% static 'images/products/OJK8XO0.jpg' %}"></div>
                         <div><img src = "{% static 'images/products/OJK8XO0.jpg' %}"></div>
                         <div><img src = "{% static 'images/core/homephoto.jpg' %}"></div>
-                    </div>
+                    </div> -->
                 </div>
-                <div class = "product-div-right">
-                    <span class = "product-name">(New) Analog Watch - For Men</span>
-                    <span class = "product-price">$350.25</span>
-                    
-                    <p class = "product-description">Brand: Samsung
-                   HD picture quality Enjoy your HD TV in the digital age we live in. Once you watch images on HDTV with vivid,
-                    vivid detail, you can be sure that you will never go back to standard definition devices or to analog TV.
-                   Smooth movement for a clear picture Motion Xcelerator Enjoy image clarity and performance as this 
-                    feature automatically estimates and compensates frames for the content source.</p>
+                <div class = "product-div-right bg-light">
+                    <div class="container">
+                        <span class = "product-name">{{product.productName}}</span>
+                        <span><strong>Category:</strong> {{product.category}}</span>
+                    </div>
+                    <br>
+                    <div class="container">
+                        <span class = "product-price">${{product.productPrice}}</span>
+                        <span class="text-muted"> <strike>${{product.productOldPrice}}</strike> - <strong class="text-danger">{{product.discount}}% off</strong> </span>
+                    </div>
+                    <p class = "product-description bg-light">{{product.productDiscription}}</p>
                     <div class = "btn-groups">
                         <button type = "button" class = "add-cart-btn"><i class = "fas fa-shopping-cart"></i>add to cart</button>
                         <button type = "button" class = "buy-now-btn"><i class = "fas fa-wallet"></i>buy now</button>
