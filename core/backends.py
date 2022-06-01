@@ -47,7 +47,8 @@ class NormalUserBackend(ModelBackend):
 
         else:
             if user.check_password(password) and self.user_can_authenticate(user):
-                return user
+                if user.is_active == True :
+                    return user
 
     
     def get_user(self, user_id):
