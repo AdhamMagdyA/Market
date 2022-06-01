@@ -58,7 +58,7 @@
           </div>
         </center>
       </a>
-      <a href="#">
+      <a href="{% url 'classic_report'%}">
         <center>
           <div class="content_img"><img class="mainImage" src="{% static 'images\core\reports.png'%}" alt="">
             <div class="overlay">
@@ -114,9 +114,19 @@
         },
         options: {
             scales: {
-                y: {
-                    beginAtZero: true
+              y:{
+                grid : {
+                  display :false,
+                  drawTicks : false
+                },
+                display :false,
+              },
+              x:{
+                grid : {
+                  display :false,
+                  drawTicks : false
                 }
+              },
             }
         }
     });
@@ -146,9 +156,19 @@
       },
       options: {
           scales: {
-              y: {
-                  beginAtZero: true
+            y:{
+              grid : {
+                display :false,
+                drawTicks : false
+              },
+              display :false,
+            },
+            x:{
+              grid : {
+                display :false,
+                drawTicks : false
               }
+            },
           }
       }
   });

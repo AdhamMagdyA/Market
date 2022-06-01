@@ -1,0 +1,46 @@
+table{
+    margin:auto;
+}
+
+.row .head{
+    color: white;
+}
+
+.cell{
+    position: center;
+}
+
+table {
+    
+    border-collapse: collapse;
+    width: 80%;
+    color:rgb(48, 47, 48)
+  }
+
+  td {
+    text-align: center;
+  }
+
+  .cell{
+      text-align: center;
+  }
+
+  th, td {
+    border-bottom:1px solid rgb(136, 21, 102);
+    width: 20%;
+    
+  }
+
+  tr{
+      padding: 17px;
+  }
+
+  .head{
+      background-color:  rgb(136, 21, 102);
+      color: aliceblue;
+  }
+
+  td{
+    padding-bottom: 15;
+      font-weight: 400;
+  }
