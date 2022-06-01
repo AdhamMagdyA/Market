@@ -19,6 +19,11 @@
 <body>
 
 <br><br><br>
+{% if message %}
+    <h5 style="margin: auto">{{message}}</h5>
+{% endif %}
+<br>
+
 <div class="container">
 <div class="col-md-12">
     {% for product in products %}
@@ -41,11 +46,14 @@
         </div>
         <footer class="card-footer flexbox align-items-center">
             <div></div>
+            <form method="POST">
+                {% csrf_token %}
             <div class="card-hover-show">
                
-                <a class="btn btn-xs fs-10 btn-bold btn-warning" href="#" data-toggle="modal" data-target="#modal-contact">Accept</a>
-                <a class="btn btn-xs fs-10 btn-bold btn-warning" href="#">Delete</a>
+                <button type="submit" class="btn btn-xs fs-10 btn-bold btn-warning" name="accepted" value="{{product.id}}" data-toggle="modal" data-target="#modal-contact">Accept</button>
+                <button type="submit" class="btn btn-xs fs-10 btn-bold btn-warning" name="delete" value="{{product.id}}">Delete</button>
             </div>
+             </form>
         </footer>
     </div>
 
@@ -53,7 +61,7 @@
 
 
 
-    <nav>
+    <!-- <nav>
         <ul class="pagination justify-content-center">
             <li class="page-item active">
                 <a class="page-link" href="#">1</a>
@@ -63,7 +71,7 @@
             <li class="page-item"><a class="page-link" href="#">4</a></li>
             <li class="page-item"><a class="page-link" href="#">5</a></li>
         </ul>
-    </nav>
+    </nav> -->
     <br>
 </div>
 </div>

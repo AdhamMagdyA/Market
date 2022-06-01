@@ -238,12 +238,13 @@ def admin_list_user(request):
         request.session['user-search-email']=request.GET.get('search-mail')
         print("session is : ",request.session['user-search-email'])
         return redirect('sus-adm-fet')
-    if request.session['message']:
-        context ={
-            'users':User.objects.filter(userAuth=Authorization.objects.get(auth_name="user") , is_active =False),
-            'message':request.session['message']
-         }
-    else:
+    try:
+        if request.session['message']:
+            context ={
+                'users':User.objects.filter(userAuth=Authorization.objects.get(auth_name="user") , is_active =False),
+                'message':request.session['message']
+            }
+    except:
         context ={
             'users':User.objects.filter(userAuth=Authorization.objects.get(auth_name="user") , is_active =False),
         }
@@ -299,8 +300,32 @@ def sus_adm_fet(request):
 
 
 def admin_list_product(request):
+    if request.method=='POST':
+        print('in post')
+        if request.POST.get('accepted'):
+            print('in accepted')
+            product=Product.objects.get(id=request.POST.get('accepted'))
+            print(product)
+            product.productActivation=True
+            product.save()
+            context ={
+                'message':"Product has been Accepted successfuly",
+                'products':Product.objects.filter(productActivation=False)
+            }
+            return render(request, 'admins/list_product.html',context)
+
+        elif request.POST.get('delete'):
+            print('in delte')
+            product=Product.objects.get(id=request.POST.get('delete'))
+            print(product)
+            product.delete()
+            context ={
+                'message':"Product has been deleted successfuly",
+                'products':Product.objects.filter(productActivation=False)
+            }
+            return render(request, 'admins/list_product.html',context)
+
     products=Product.objects.filter(productActivation=False)
-    print (products)
     context ={
         'products':products
     }
