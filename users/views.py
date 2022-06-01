@@ -332,6 +332,14 @@ def admin_list_product(request):
     return render(request, 'admins/list_product.html',context)
 
 
+def classic_report(request):
+    context={
+        'users':User.objects.all(),
+        'sellers':Seller.objects.all(),
+    }
+    return render(request,'admins/classic_report.html',context)
+
+
 
 
 
