@@ -1,5 +1,6 @@
 
 from operator import index
+from unicodedata import category
 from django.http import HttpResponse
 from django.shortcuts import render
 from .models import Product
@@ -7,7 +8,12 @@ from django.core.paginator import Paginator
 
 # Create your views here.
 def index(request):
-    products = Product.objects.all()
+    category = request.GET.get('category')
+    if(category):
+        products = Product.objects.filter(category_id=category)
+    else:
+        products = Product.objects.all()
+
     pages = Paginator(products, 3)
     pageNumber = request.GET.get('page')
     page = pages.get_page(pageNumber)

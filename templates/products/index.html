@@ -35,7 +35,9 @@
                                 </div>
                                 <div class="part-2 ">
                                     <h3 class="product-title ">{{product.productName}}</h3>
+                                    {% if product.discount > 0 %}
                                     <h4 class="product-old-price ">${{product.productOldPrice}}</h4>
+                                    {% endif %}
                                     <h4 class="product-price ">${{product.productPrice}}</h4>
                                 </div>
                             </div>

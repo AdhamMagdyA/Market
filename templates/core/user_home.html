@@ -56,8 +56,10 @@
             <div class="product-info">
               <h4 class="product-type">{{product.productName}}</h2>
               <p class="product-about">{{product.productDiscription|slice:"0:25"}}...</p>
-              <span class="price">${{product.productOldPrice}}</span
-              ><span class="actual-price">${{product.productPrice}}</span>
+              {% if product.discount > 0 %}
+              <span class="price">${{product.productOldPrice}}</span>
+              {% endif %}
+              <span class="actual-price">${{product.productPrice}}</span>
             </div>
           </div>
           {% endfor %}
@@ -72,7 +74,7 @@
         <div class="product-container">
           {% for category in allCategories %}
           <div class="card">
-            <a href="">
+            <a href="products/?category={{category.id}}">
               <button type="button" class="btn btn-secondary">{{category}}</button>
             </a>
           </div>
