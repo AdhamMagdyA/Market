@@ -24,7 +24,7 @@ DEFAULT_CASE=1
 class Product(models.Model):
     productName =models.CharField(max_length=20,blank=True, null=True)
     productDiscription=models.TextField(default='no discription', null=True)
-    productImage=models.ImageField(upload_to=('photos/%y/%m/%d'),default='productPic.jpg', null=True) #check media, put defalt photo
+    productImage=models.ImageField(upload_to='photos/%y/%m/%d',default='media/productPic.jpg', null=True) #check media, put defalt photo
     uploadingDate=models.DateField(default= datetime.now)
     productPrice=models.DecimalField(max_digits=8, decimal_places=2)
     productOldPrice=models.DecimalField(max_digits=8, decimal_places=2, null=True)
