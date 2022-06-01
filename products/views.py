@@ -8,7 +8,7 @@ from django.core.paginator import Paginator
 # Create your views here.
 def index(request):
     products = Product.objects.all()
-    pages = Paginator(products, 1)
+    pages = Paginator(products, 3)
     pageNumber = request.GET.get('page')
     page = pages.get_page(pageNumber)
     return render(request, 'products/index.html', {'pages': pages, 'current_page': page})

@@ -26,14 +26,12 @@
 
                                 <div class="part-1">
                                     <span class="new">new</span>
-                                    {% if product.productOldPrice %}
+                                    {% if product.discount > 0 %}
                                     <span class="discount">- {{product.discount}}%</span>
                                     {% endif %}
-                                    <img class="productImg" src=" https://img.ltwebstatic.com/images3_pi/2021/03/02/16146694366d5bba8666f3a707ef384013c8bbbdae_thumbnail_405x552.webp " class="product-thumb ">
-                                    <button class="card-btn2 ">Details</button>
+                                    <img class="productImg" src=" {{ product.productImage.url }} " class="product-thumb ">
+                                    <a href="/products/get/{{product.id}}"><button class="card-btn2 ">Details</button></a>
                                     <button class="card-btn ">add to whislist</button>
-
-
                                 </div>
                                 <div class="part-2 ">
                                     <h3 class="product-title ">{{product.productName}}</h3>
