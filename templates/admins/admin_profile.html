@@ -1,4 +1,4 @@
-{% extends 'core/base.html' %}
+{% extends 'admins/admin_nav.html' %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,8 +6,6 @@
 
 <head>
     <title></title>
-    <link rel="stylesheet" href="{% static 'css/nav.css' %}">
-    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
     <link rel="stylesheet" href="{% static 'css/admin_profile.css' %}">
     <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
 
@@ -23,13 +21,13 @@
 
         <div class="card color-card">
 
-            <img src="https://images.unsplash.com/photo-1499557354967-2b2d8910bcca?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=7d5363c18112a02ce22d0c46f8570147&auto=format&fit=crop&w=635&q=80%20635w" alt="profile-pic" class="profile">
-            <h1 class="admin-name">Admin Name</h1>
-            <p class="admin-email"> Admin@gmail.com</p>
+            <img src="{{request.user.userPhoto.url}}" alt="profile-pic" class="profile">
+            <h1 class="admin-name">{{request.user.first_name}} {{ request.user.last_name}}</h1>
+            <p class="admin-email"> {{request.user.email}}</p>
 
 
             <a href="admin_profile_edit.html">
-                <button class="btn top"><a href="{% url 'editAdminProfile' %}">sign up</a></button>
+                <button class="btn top"><a href="{% url 'editAdminProfile' %}">Edit Profile</a></button>
             </a>
 
         </div>

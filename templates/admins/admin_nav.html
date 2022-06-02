@@ -1,0 +1,89 @@
+
+{%load static%}
+<link rel="stylesheet" href="{% static 'css/admins/admin_nav.css' %}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{% static 'css/core/footer.css' %}">
+
+    <nav class="navbar">
+        <div class="nav">
+            <a href="{% url 'adminhome' %}">
+                <img src="/media/Market.png" alt="lolo" class="site-logo">
+            </a>
+            <div class="nav-items">
+                <!-- <div class=" search " >
+                    <input type="text" class="search-box" placeholder="search product">
+                    <button class="search-button">search</button>
+                </div> -->
+
+                <!-- <div class="notification">
+                    <a href="#"> <i class="fa fa-bell fa-2x"></i></a>
+                    <a href="#"> <i class="fa fa-shopping-cart fa-2x"></i></a>
+                </div> -->
+            <div>
+                    
+            </div>
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#" >
+                        <div class="dropdown">
+                            <button class="dropbtn"><img src="{{request.user.userPhoto.url}}" alt="img" style="height: 40px;width: 90%;"></img></button>
+                            <div class="dropdown-content">
+                                <a href="{% url 'adminProfile' %}">profile</a>
+                                <a href="{% url 'logout' %}">log out</a>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    <!-- <ul class="links-container">
+        <li class="link-item"><a href="#" class="link">home</a></li>
+        <li class="link-item"><a href="#" class="link">cloths</a></li>
+        <li class="link-item"><a href="#" class="link">electronics</a></li>
+
+    </ul> -->
+    
+</nav>
+
+
+
+    
+{% block content %}
+
+{% endblock %}
+
+<footer>
+    <div class="footer">
+        <img src="/media/Market.png" class="logo" alt="">
+        <div class="footer-ul-container">
+            <ul class="category">
+                <li class="category-title">clothes</li>
+                <li><a href="#" class="footer-link">dresses</a></li>
+                <li><a href="#" class="footer-link">shirts</a></li>
+                <li><a href="#" class="footer-link">jeans</a></li>
+                <li><a href="#" class="footer-link">shoes</a></li>
+                <li><a href="#" class="footer-link">watch</a></li>
+            </ul>
+            <ul class="category">
+                <li class="category-title">electronics</li>
+                <li><a href="#" class="footer-link">televisions</a></li>
+                <li><a href="#" class="footer-link">computers</a></li>
+                <li><a href="#" class="footer-link">headphones</a></li>
+                <li><a href="#" class="footer-link">camera</a></li>
+            </ul>
+        </div>
+        <div class="about">
+            <p class="footer-title">about company</p>
+            <p class="info">provide ay nininini which customer need :)</p>
+            <p class="info">support email - customersupport@nininini.com</p>
+            <p class="info">telephone - +2011345677</p>
+        </div>
+        <div class="footer-social-container">
+            <a href="#" class="social-link">instagram</a>
+            <a href="#" class="social-link">facebook</a>
+            <a href="#" class="social-link">twitter</a>
+        </div>
+    </div>
+</footer>
+
+
+    <script src = "product-details.js"></script>
