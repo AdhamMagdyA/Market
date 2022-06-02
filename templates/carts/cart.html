@@ -1,8 +1,4 @@
-{% extends 'core/base.html' %}
-
-{% load static %}
-
-{% block content %}
+{% extends 'core/base.html' %} {% load static %} {% block content %}
 <!DOCTYPE html>
 
 <html>
@@ -11,64 +7,48 @@
     <title>Shopping Cart</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/carts/shopping_cart.css' %}">
     <link rel="icon" type="image/x-icon" href="{% static 'images/carts/favic.ico' %}">
+
 </head>
 
-<body>
+<body onload="getTotal()">
 
     <div class="container">
 
         <section id="cart">
+            {% for product in data %}
             <article class="product">
                 <header>
-                    <a class="remove">
-                        <img src="{% static 'images/carts/product 1.jpg' %}"
-                            alt="product preview">
+                    <a class="remove" href="{% url 'removeFromCart' product.id %}">
+                        <img src="{{product.productImage.url}}" alt="product preview">
                     </a>
                 </header>
 
                 <div class="content">
                     <div>
-                        <span class="minus" onclick="change">-</span>
-                        <span class="quantity">2</span>
-                        <span class="plus">+</span>
-                        <h1>Product #1</h1>
+                        <button class="minus" id="{{product.id}}">-</button>
+                        <span class="quantity" id="tItems{{product.id}}">1</span>
+                        <button class="plus" id="{{product.id}}">+</button>
+                        <h1>{{product.productName}}</h1>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga omnis dolorem sed totam consequuntur unde dolores cupiditate officiis, quia facere excepturi optio reiciendis pariatur veritatis harum repellat dolor quod nostrum.</p>.
-                </div>
-
-                <div class="custom-footer-content custom-footer">
-
-                    <h2 class="full-price"> 29.98€</h2>
-                </div>
-            </article>
-            <article class="product">
-                <header>
-                    <a class="remove">
-                        <img src="{% static 'images/carts/product 2.jpg' %}"
-                            alt="product preview">
-                    </a>
-                </header>
-
-                <div class="content">
                     <div>
-                        <span class="minus" onclick="change">-</span>
-                        <span class="quantity">2</span>
-                        <span class="plus">+</span>
-                        <h1>Product #2</h1>
+                        <p>{{product.productDiscription}}</p>
                     </div>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius facilis accusamus obcaecati fugit adipisci similique impedit quibusdam earum praesentium voluptatum, eveniet, vitae culpa quaerat modi, eaque dolor laborum vel iusto! </p>.
+
                 </div>
 
-                <div class="custom-footer-content custom-footer">
+                <div class=" custom-footer-content custom-footer ">
+                    <h2 class="full-price " id="pPrice{{product.id}}" hidden>{{product.productPrice}}</h2>
+                    <h2 class="full-price " id="total{{product.id}}">{{product.productPrice}} $</h2>
 
-                    <h2 class="full-price"> 30.08€</h2>
                 </div>
             </article>
+            {% endfor %}
+
         </section>
 
     </div>
 
-    <div id="site-footer" class="custom-footer">
+    <div id="site-footer " class="custom-footer ">
 
         <table>
             <tr>
@@ -76,7 +56,7 @@
                     Subtotal
                 </th>
                 <td class="td_data">
-                    163.96
+                    <span id="tPrice">0</span>
                 </td>
             </tr>
             <tr>
@@ -84,33 +64,85 @@
                     Taxes (5%)
                 </th>
                 <td class="td_data">
-                    8.2
+                    <span id="tax">0</span>
                 </td>
             </tr>
             <tr>
                 <th class="th_head">
-                    Shipping
+                    Shipping(8%)
                 </th>
                 <td class="td_data">
-                    5.00
+                    <span id="ship">0</span>
                 </td>
             </tr>
             <tr>
-                <th class="conclusion">Total <span style="margin-left: 60px;">177.16</span></th>
+                <th class="conclusion ">Total <span style="margin-left: 60px; "><span id="fPrice">0</span></th>
             </tr>
         </table>
-        <a class="btn">Checkout</a>
-        <!--<div class="container clearfix">
-            <h2 class="subtotal" id="left">Subtotal: <span id="right">163.96</span>€</h2>
-            <h3 class="tax" id="left">Taxes (5%): <span  id="right">8.2</span>€</h3>
-            <h3 class="shipping" id="left">Shipping: <span  id="right">5.00</span>€</h3>
-            <h1 class="total">Total: <span>177.16</span>€</h1>
-            <a class="btn">Checkout</a>
+        <a class="btn ">Checkout</a>
+        <!--<div class="container clearfix ">
+            <h2 class="subtotal " id="left ">Subtotal: <span id="right ">163.96</span>€</h2>
+            <h3 class="tax " id="left ">Taxes (5%): <span  id="right ">8.2</span>€</h3>
+            <h3 class="shipping " id="left ">Shipping: <span  id="right ">5.00</span>€</h3>
+            <h1 class="total ">Total: <span>177.16</span>€</h1>
+            <a class="btn ">Checkout</a>
     
         </div>-->
     </div>
 
+    <script type="text/javascript ">
+        function minus(event) {
+            var target = event.target.id;
+            console.log(target);
+            var x = document.getElementById("tItems" + target);
+            if (x.innerHTML > 1) {
+                x.innerHTML = parseInt(x.innerHTML) - 1;
+                var y = document.getElementById("pPrice" + target);
+                var z = document.getElementById("total" + target);
+                z.innerHTML = parseInt(y.innerHTML) * parseInt(x.innerHTML) + " $";
+                getTotal()
+            }
+        }
+        var elem = document.getElementsByClassName("minus")
+        console.log(elem);
+        for (z of elem) {
+            z.addEventListener("click", minus);
+        }
 
+        function plus(event) {
+            var target = event.target.id;
+            console.log(target);
+            var x = document.getElementById("tItems" + target);
+            x.innerHTML = parseInt(x.innerHTML) + 1;
+            var y = document.getElementById("pPrice" + target);
+            var z = document.getElementById("total" + target);
+            z.innerHTML = (parseInt(y.innerHTML) * parseInt(x.innerHTML)).toFixed(2) + " $";
+            getTotal();
+        }
+        var elem = document.getElementsByClassName("plus")
+        console.log(elem);
+        for (z of elem) {
+            z.addEventListener("click", plus);
+        }
+
+        function getTotal() {
+            var total = 0;
+            var elem = document.querySelectorAll(`[id^="total"]`);
+            for (z of elem) {
+                total += parseInt(z.innerHTML);
+            }
+            var t = document.getElementById("tPrice");
+            t.innerHTML = total.toFixed(2) + " $";
+            var tax = total * 0.05;
+            var t = document.getElementById("tax");
+            t.innerHTML = tax.toFixed(2) + " $";
+            var ship = total * 0.08;
+            var t = document.getElementById("ship");
+            t.innerHTML = ship.toFixed(2) + " $";
+            var f = document.getElementById("fPrice");
+            f.innerHTML = (total + tax + ship).toFixed(2) + " $";
+        }
+    </script>
 
 </body>
 

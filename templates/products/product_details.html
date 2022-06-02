@@ -1,25 +1,25 @@
-{% extends 'core/base.html' %}
-{% load static %}
-
-{% block content %}
+{% extends 'core/base.html' %} {% load static %} {% block content %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ProductDetails</title>
     <link rel="stylesheet" href="{% static 'css/products/product-details.css' %}">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"
+    />
+
 </head>
+
 <body>
-    <div class = "main">
-        <div class = "container">
-            <div class = "product-div">
-                <div class = "product-div-left">
-                    <div class = "img-container">
-                        <img src = " {{product.productImage.url}} " alt = "watch">
+    <div class="main">
+        <div class="container">
+            <div class="product-div">
+                <div class="product-div-left">
+                    <div class="img-container">
+                        <img src=" {{product.productImage.url}} " alt="watch">
                     </div>
                     <!-- <div class = "hover-container">
                         <div><img src = "{% static 'images/products/OJK8XO0.jpg' %}"></div>
@@ -29,20 +29,22 @@
                         <div><img src = "{% static 'images/core/homephoto.jpg' %}"></div>
                     </div> -->
                 </div>
-                <div class = "product-div-right bg-light">
+                <div class="product-div-right bg-light">
                     <div class="container">
-                        <span class = "product-name">{{product.productName}}</span>
+                        <span class="product-name">{{product.productName}}</span>
                         <span><strong>Category:</strong> {{product.category}}</span>
                     </div>
                     <br>
                     <div class="container">
-                        <span class = "product-price">${{product.productPrice}}</span>
+                        <span class="product-price">${{product.productPrice}}</span>
                         <span class="text-muted"> <strike>${{product.productOldPrice}}</strike> - <strong class="text-danger">{{product.discount}}% off</strong> </span>
                     </div>
-                    <p class = "product-description bg-light">{{product.productDiscription}}</p>
-                    <div class = "btn-groups">
-                        <button type = "button" class = "add-cart-btn"><i class = "fas fa-shopping-cart"></i>add to cart</button>
-                        <button type = "button" class = "buy-now-btn"><i class = "fas fa-wallet"></i>buy now</button>
+                    <p class="product-description bg-light">{{product.productDiscription}}</p>
+                    <div class="btn-groups">
+                        <a href="{% url 'addToCart1' product.id %}">
+                            <button type="button" class="add-cart-btn"><i class = "fas fa-shopping-cart"></i>add to cart</button>
+                        </a>
+                        <button type="button" class="buy-now-btn"><i class = "fas fa-wallet"></i>buy now</button>
                     </div>
                 </div>
             </div>
@@ -51,7 +53,8 @@
 
 
 
-    <script src = "{% static 'js/products/product-details.js' %}"></script>
+    <script src="{% static 'js/products/product-details.js' %}"></script>
 </body>
+
 </html>
 {% endblock %}
