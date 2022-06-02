@@ -1,14 +1,23 @@
+from unicodedata import category
 from django.http import HttpResponse
 from django.contrib import messages
 from django.shortcuts import redirect, render
 
 from django.contrib.auth import authenticate, login as auth_login, logout
+
+from products.models import Category, Product
 # from .decorators import unauthenticated_user
 
 # Create your views here.
 
 def userHome(request):
-    return render(request, 'core/user_home.html')
+    categories = Category.objects.all()[:3]
+    data = {}
+    for cat in categories:
+        products = Product.objects.filter(category=cat)
+        data[cat] = products
+    allCategories = Category.objects.all()
+    return render(request, 'core/user_home.html', {"categories": data, "allCategories": allCategories})
 
 
 # @unauthenticated_user

@@ -14,10 +14,10 @@
 <body>
     
     <div class="all">
-        <div class="container">
+        <div class="container" style="height: 900px;">
             <h1>Product Information</h1>
-            <form>
-
+            <form method="post" action="" enctype="multipart/form-data">
+                {% csrf_token %}
                 <div class="row">
                     <div class="column1">
                         <label for="fname">product title<abbr title="This field is mandatory"
@@ -36,7 +36,7 @@
                         <img id="output_image">
 
                         <input type="file" id="actual-btn" hidden accept="image/*" onchange="preview_image(event)"
-                            required="">
+                            required="" name="upload">
                         <label for="actual-btn" class="actual-btn">Choose Image</label>
 
 
@@ -50,7 +50,17 @@
                                 aria-label="required">*</abbr></label>
                     </div>
                     <div class="column2">
-                        <input type="text" id="pPrice" name="prodPrice" placeholder="00$" required>
+                        <input type="text" id="pPrice" name="prodPrice" placeholder="199" required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="column1">
+                        <label for="Price">Price before discount<abbr title="This field is mandatory"
+                                aria-label="required"></abbr></label>
+                    </div>
+                    <div class="column2">
+                        <input type="text" id="pOldPrice" name="prodOldPrice" placeholder="199 (if there is a discount)">
                     </div>
                 </div>
 
@@ -69,11 +79,11 @@
                                 aria-label="required">*</abbr></label>
                     </div>
                     <div class="column2">
-                        <select id="country" name="country" required>
+                        <select id="country" name="prodCategory" required>
                             <option value="">Select Category</option>
-                            <option value="1">Electronics</option>
-                            <option value="2">Men Clothes</option>
-                            <option value="3">Women Clothes</option>
+                            {% for category in categories %}
+                            <option value="{{category.id}}">{{category}}</option>
+                            {% endfor %}
                         </select>
                     </div>
                 </div>

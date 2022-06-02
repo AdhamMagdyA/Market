@@ -1,15 +1,17 @@
 {% load static %}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
 <link rel="stylesheet" href="{% static 'css/core/nav.css' %}">
 <link rel="stylesheet" href="{% static 'css/core/footer.css' %}">
 
 <nav class="navbar">
     <div class="nav">
-        <img src="{% static 'images/core/logo.jpg' %}" alt="lolo" class="site-logo">
+        <a href="{% url 'home' %}" style="margin-right: 20px;">
+            <img src="{% static 'images/core/logo.jpg' %}" alt="lolo" class="site-logo">
+        </a>
         <div class="nav-items">
-            <div class="search">
+            <div class="search" style="margin-left: 40px;">
                 <input type="text" class="search-box" placeholder="search product">
-                <button class="search-button">search</button>
-
+                <button class="search-button" style="height:40px;">search</button>
             </div>
             <div class="sign">
                 <button class="signs-btn"><a href="{% url 'signup' %}">sign up</a></button>
@@ -23,20 +25,18 @@
 
 
     </div>
-    <ul class="links-container">
+    <!-- <ul class="links-container">
         <li class="link-item">
             <a href="index.html" class="link">home</a>
         </li>
         <li class="link-item"><a href="#" class="link">cloths</a></li>
         <li class="link-item"><a href="#" class="link">electronics</a></li>
 
-    </ul>
+    </ul> -->
 
 </nav>
 
-{% block content %}
-
-{% endblock %}
+{% block content %} {% endblock %}
 
 <footer>
     <div class="footer">

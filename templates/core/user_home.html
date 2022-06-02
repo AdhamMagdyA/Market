@@ -26,9 +26,9 @@
       </header>
 
       <!---------------------------------------------------ELECTRONICS---------------------------------------------------------------->
-
+      {% for category, products in categories.items %}
       <section class="product">
-        <h2 class="product-category">Electronics</h2>
+        <h2 class="product-category">{{category}}</h2>
 
         <button class="pre-btn">
           <img src="{% static 'images/core/arrow.png' %}" alt="" />
@@ -36,356 +36,86 @@
         <button class="nxt-btn">
           <img src="{% static 'images/core/arrow.png' %}" alt="" />
         </button>
-
+        
         <div class="product-container">
-          <div class="product-card">
+          {% for product in products %}
+          <div class="product-card" style="height: 465px;">
             <div class="product-image">
-              <span class="discount-tag">10% off</span>
-              <a href="{% url 'products:get' %}">
+              {% if product.discount > 0 %}
+              <span class="discount-tag">{{product.discount}}% off</span>
+              {% endif %}
+              <a href="{% url 'products:getProduct' product.id %}">
                 <img
-                src="https://m.media-amazon.com/images/I/51lE0vfg8IL._AC_UL480_FMwebp_QL65_.jpg"
+                src="{{ product.productImage.url }}"
                 class="product-thumb"
-                alt=""
+                alt="Product Picture"
                  />
               </a>
               <button class="card-btn">add to whislist</button>
             </div>
             <div class="product-info">
-              <h2 class="product-type">labtob lenovo</h2>
-              <p class="product-about">a short line about the lab..</p>
-              <span class="price">$360</span
-              ><span class="actual-price">$400</span>
+              <h4 class="product-type">{{product.productName}}</h2>
+              <p class="product-about">{{product.productDiscription|slice:"0:25"}}...</p>
+              {% if product.discount > 0 %}
+              <span class="price">${{product.productOldPrice}}</span>
+              {% endif %}
+              <span class="actual-price">${{product.productPrice}}</span>
             </div>
           </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-tag">10% off</span>
-              <a href="{% url 'products:get' %}">
-              <img
-                src="https://m.media-amazon.com/images/I/71LdES3WGjL._AC_UL480_FMwebp_QL65_.jpg"
-                class="product-thumb"
-                alt=""
-              />
-              </a>
-              <button class="card-btn">add to whislist</button>
-            </div>
-            <div class="product-info">
-              <h2 class="product-type">LG 32</h2>
-              <p class="product-about">a short line about the television..</p>
-              <span class="price">$360</span
-              ><span class="actual-price">$400</span>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-tag">10% off</span>
-              <a href="{% url 'products:get' %}">
-              <img
-                src="https://m.media-amazon.com/images/I/71soIceumaL._AC_UL480_QL65_.jpg"
-                class="product-thumb"
-                alt=""
-              />
-              </a>
-              <button class="card-btn">add to whislist</button>
-            </div>
-            <div class="product-info">
-              <h2 class="product-type">samsong galaxy</h2>
-              <p class="product-about">a short line about the lab..</p>
-              <span class="price">$360</span
-              ><span class="actual-price">$400</span>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-tag">10% off</span>
-              <a href="{% url 'products:get' %}">
-              <img
-                src="https://m.media-amazon.com/images/I/51lE0vfg8IL._AC_UL480_FMwebp_QL65_.jpg"
-                class="product-thumb"
-                alt=""
-              />
-              </a>
-              <button class="card-btn">add to whislist</button>
-            </div>
-            <div class="product-info">
-              <h2 class="product-type">labtob lenovo</h2>
-              <p class="product-about">a short line about the lab..</p>
-              <span class="price">$360</span
-              ><span class="actual-price">$400</span>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-tag">10% off</span>
-              <a href="{% url 'products:get' %}">
-              <img
-                src="https://m.media-amazon.com/images/I/51lE0vfg8IL._AC_UL480_FMwebp_QL65_.jpg"
-                class="product-thumb"
-                alt=""
-              />
-              </a>
-              <button class="card-btn">add to whislist</button>
-            </div>
-            <div class="product-info">
-              <h2 class="product-type">labtob lenovo</h2>
-              <p class="product-about">a short line about the lab..</p>
-              <span class="price">$360</span
-              ><span class="actual-price">$400</span>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-tag">10% off</span>
-              <a href="{% url 'products:get' %}">
-              <img
-                src="https://m.media-amazon.com/images/I/51lE0vfg8IL._AC_UL480_FMwebp_QL65_.jpg"
-                class="product-thumb"
-                alt=""
-              />
-              </a>
-              <button class="card-btn">add to whislist</button>
-            </div>
-            <div class="product-info">
-              <h2 class="product-type">labtob lenovo</h2>
-              <p class="product-about">a short line about the lab..</p>
-              <span class="price">$360</span
-              ><span class="actual-price">$400</span>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-tag">10% off</span>
-              <a href="{% url 'products:get' %}">
-              <img
-                src="https://m.media-amazon.com/images/I/51lE0vfg8IL._AC_UL480_FMwebp_QL65_.jpg"
-                class="product-thumb"
-                alt=""
-              />
-              </a>
-              <button class="card-btn">add to whislist</button>
-            </div>
-            <div class="product-info">
-              <h2 class="product-type">labtob lenovo</h2>
-              <p class="product-about">a short line about the lab..</p>
-              <span class="price">$360</span
-              ><span class="actual-price">$400</span>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </section>
-
-      <!---------------------------------------------------CLOTHES---------------------------------------------------------------->
-
-      <section class="product">
-        <h2 class="product-category">clothes</h2>
-
-        <button class="pre-btn">
-          <img src="{% static 'images/core/arrow.png' %}" alt="" />
-        </button>
-        <button class="nxt-btn">
-          <img src="{% static 'images/core/arrow.png' %}" alt="" />
-        </button>
-
-        <div class="product-container">
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-tag">5% off</span>
-              <a href="{% url 'products:get' %}">
-              <img
-                onmouseover="this.src='https://img.ltwebstatic.com/images3_pi/2022/02/28/1646033826827b85b54c433b1466d63cc1cba2a6f8_thumbnail_405x552.webp'"
-                onmouseout="this.src='https://img.ltwebstatic.com/images3_pi/2022/02/28/1646033824c6c8c281c0d63270ec05e2a5793204a4_thumbnail_405x552.webp'"
-                src="https://img.ltwebstatic.com/images3_pi/2022/02/28/1646033824c6c8c281c0d63270ec05e2a5793204a4_thumbnail_405x552.webp"
-                class="product-thumb"
-                alt=""
-              />
-              </a>
-              <button class="card-btn">add to whislist</button>
-            </div>
-            <div class="product-info">
-              <h2 class="product-type">dress</h2>
-              <p class="product-about">a short line about dress..</p>
-              <span class="price">$38</span
-              ><span class="actual-price">$40</span>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-tag">10% off</span>
-              <a href="{% url 'products:get' %}">
-              <img
-                onmouseover="this.src='https://img.ltwebstatic.com/images3_pi/2021/11/11/163661667154ae23fe7bc18184df4ccfb19c935b62_thumbnail_405x552.webp'"
-                onmouseout="this.src='https://img.ltwebstatic.com/images3_pi/2021/11/11/1636616669162e33369189e5690bf1ed07349c83dc_thumbnail_405x552.webp'"
-                src="https://img.ltwebstatic.com/images3_pi/2021/11/11/1636616669162e33369189e5690bf1ed07349c83dc_thumbnail_405x552.webp"
-                class="product-thumb"
-                alt=""
-              />
-              </a>
-              <button class="card-btn">add to whislist</button>
-            </div>
-            <div class="product-info">
-              <h2 class="product-type">green shoes</h2>
-              <p class="product-about">a short line about shoes..</p>
-              <span class="price">$360</span
-              ><span class="actual-price">$400</span>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-tag">10% off</span>
-              <a href="{% url 'products:get' %}">
-              <img
-                onmouseover="this.src='https://img.ltwebstatic.com/images3_pi/2021/03/02/1614669439f09b1cbabc4a34e9855e7fc717a44338_thumbnail_405x552.webp'"
-                onmouseout="this.src='https://img.ltwebstatic.com/images3_pi/2021/03/02/16146694366d5bba8666f3a707ef384013c8bbbdae_thumbnail_405x552.webp'"
-                src="https://img.ltwebstatic.com/images3_pi/2021/03/02/16146694366d5bba8666f3a707ef384013c8bbbdae_thumbnail_405x552.webp"
-                class="product-thumb"
-                alt=""
-              />
-              </a>
-              <button class="card-btn">add to whislist</button>
-            </div>
-            <div class="product-info">
-              <h2 class="product-type">square bag</h2>
-              <p class="product-about">a short line about square bag..</p>
-              <span class="price">$36</span
-              ><span class="actual-price">$40</span>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-tag">10% off</span>
-              <a href="{% url 'products:get' %}">
-              <img
-                src="https://eg.jumia.is/unsafe/fit-in/500x500/filters:fill(white)/product/88/564062/1.jpg?5052"
-                class="product-thumb"
-                alt=""
-              />
-              </a>
-              <button class="card-btn">add to whislist</button>
-            </div>
-            <div class="product-info">
-              <h2 class="product-type">suit</h2>
-              <p class="product-about">a short line about suit..</p>
-              <span class="price">$360</span
-              ><span class="actual-price">$400</span>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-tag">10% off</span>
-              <a href="{% url 'products:get' %}">
-              <img
-                src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/12/415342/1.jpg?0145"
-                class="product-thumb"
-                alt=""
-              />
-              </a>
-              <button class="card-btn">add to whislist</button>
-            </div>
-            <div class="product-info">
-              <h2 class="product-type">sport watch</h2>
-              <p class="product-about">a short line about sport watch..</p>
-              <span class="price">$360</span
-              ><span class="actual-price">$400</span>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-tag">10% off</span>
-              <a href="{% url 'products:get' %}">
-              <img
-                onmouseover="this.src='https://img.ltwebstatic.com/images3_pi/2022/04/08/1649396354374466d12a5d5ad062b9bc45befc3a06_thumbnail_405x552.webp'"
-                onmouseout="this.src='https://img.ltwebstatic.com/images3_pi/2022/04/08/1649396353cb8b33f14a36b8e4ae38df0f9acb085a_thumbnail_405x552.webp'"
-                src="https://img.ltwebstatic.com/images3_pi/2022/04/08/1649396353cb8b33f14a36b8e4ae38df0f9acb085a_thumbnail_405x552.webp"
-                class="product-thumb"
-                alt=""
-              />
-              </a>
-              <button class="card-btn">add to whislist</button>
-            </div>
-            <div class="product-info">
-              <h2 class="product-type">fashion glasses</h2>
-              <p class="product-about">metal frame fashion glasses..</p>
-              <span class="price">$360</span
-              ><span class="actual-price">$400</span>
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <span class="discount-tag">10% off</span>
-              <a href="{% url 'products:get' %}">
-              <img
-                onmouseover="this.src='https://img.ltwebstatic.com/images3_pi/2021/11/15/1636976021fea0bc10c5438b04411b48f2660003c4_thumbnail_405x552.webp'"
-                onmouseout="this.src='https://img.ltwebstatic.com/images3_pi/2021/11/15/163697600547e9aae1102536d935a089284a4b0c83_thumbnail_405x552.webp'"
-                src="https://img.ltwebstatic.com/images3_pi/2021/11/15/163697600547e9aae1102536d935a089284a4b0c83_thumbnail_405x552.webp"
-                class="product-thumb"
-                alt=""
-              />
-              </a>
-              <button class="card-btn">add to whislist</button>
-            </div>
-            <div class="product-info">
-              <h2 class="product-type">flip-flops</h2>
-              <p class="product-about">a short line about flip-flops..</p>
-              <span class="price">$360</span
-              ><span class="actual-price">$400</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
+      {% endfor %}
+      
       <!------------------------------------------------------GENDER--------------------------------------------------------------------->
       <section class="product">
-        <h2 class="product-category">Category</h2>
+        <h2 class="product-category">More Categories</h2>
 
         <div class="product-container">
-          <div class="category-card">
-            <div class="category-image">
-              <a href="/products/">
-                <img
-                  onmouseover="this.src='https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/24/098262/1.jpg?7471'"
-                  onmouseout="this.src='https://img.ltwebstatic.com/images3_pi/2022/03/17/164748373932d42c34e55ae7092d3bd3d7d76ea898_thumbnail_405x552.webp'"
-                  src="https://img.ltwebstatic.com/images3_pi/2022/02/28/1646033824c6c8c281c0d63270ec05e2a5793204a4_thumbnail_405x552.webp"
-                  class="product-thumb"
-                  alt=""
-                />
-
-                <p class="type-title">Clothes</p>
-              </a>
-            </div>
+          {% for category in allCategories %}
+          <div class="card">
+            <a href="products/?category={{category.id}}">
+              <button type="button" class="btn btn-secondary">{{category}}</button>
+            </a>
           </div>
-
-          <div class="category-card">
-            <div class="category-image">
-              <a href="/products/">
-                <img
-                  onmouseover="this.src='https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/78/630152/1.jpg?6731'"
-                  class="product-thumb'"
-                  onmouseout="this.src='https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/32/673122/1.jpg?7263'"
-                  src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/32/673122/1.jpg?7263"
-                  class="product-thumb"
-                  alt=""
-                />
-
-                <p class="type-title">Electronics</p>
-              </a>
-            </div>
-          </div>
+          {% endfor %}
         </div>
+        <br>
       </section>
     </div>
     <script src="{% static 'js/core/home.js' %}"></script>
   </body>
   {% endblock %}
 </html>
+
+<!-- <div class="category-card">
+  <div class="category-image">
+    <a href="/products/">
+      <img
+        onmouseover="this.src='https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/24/098262/1.jpg?7471'"
+        onmouseout="this.src='https://img.ltwebstatic.com/images3_pi/2022/03/17/164748373932d42c34e55ae7092d3bd3d7d76ea898_thumbnail_405x552.webp'"
+        src="https://img.ltwebstatic.com/images3_pi/2022/02/28/1646033824c6c8c281c0d63270ec05e2a5793204a4_thumbnail_405x552.webp"
+        class="product-thumb"
+        alt=""
+      />
+
+      <p class="type-title">Clothes</p>
+    </a>
+  </div>
+</div>
+
+<div class="category-card">
+  <div class="category-image">
+    <a href="/products/">
+      <img
+        onmouseover="this.src='https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/78/630152/1.jpg?6731'"
+        class="product-thumb'"
+        onmouseout="this.src='https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/32/673122/1.jpg?7263'"
+        src="https://eg.jumia.is/unsafe/fit-in/300x300/filters:fill(white)/product/32/673122/1.jpg?7263"
+        class="product-thumb"
+        alt=""
+      />
+
+      <p class="type-title">Electronics</p>
+    </a>
+  </div> -->
