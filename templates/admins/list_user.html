@@ -1,0 +1,98 @@
+{% extends 'admins/admin_nav.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title> user list </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/admins/list_users.css' %}" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" >
+    <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <br><br><br>
+    {% if message %}
+        <h5 style="margin: auto;">{{message}}</h5>
+    {% endif %}
+
+
+    <form method="GET">
+    <div class="search">
+        <input type="search" class="search-box" name="search-mail" placeholder="enter email">
+        <!-- <input type="submit" class="search-button" /> -->
+        <button class="search-button" type="submit">search</button>
+    </div>
+    </form>
+
+    <div class="container">
+    <div class="col-md-12">
+
+        {% for user in users %}
+        <div class="card b-1 hover-shadow mb-20">
+            <div class="media card-body">
+                <div class="media-left pr-12">
+                    <img class="avatar avatar-xl no-radius" src="{{ user.userPhoto.url }}" alt="...">
+                </div>
+                <div class="media-body">
+                    <div class="mb-2">
+                        <span class="fs-20 pr-16">{{ user.first_name}} {{ user.last_name }}</span>
+                    </div>
+                    <small class="fs-16 fw-300 ls-1">{{user.email}}</small>
+                </div>
+                
+            </div>
+            <footer class="card-footer flexbox align-items-center">
+                <div>
+                    
+                
+                </div>
+                <form method="POST">
+                    {% csrf_token %}
+                <div class="card-hover-show">
+                    <button type="submit" class="btn btn-xs fs-10 btn-bold btn-warning" href="#" data-toggle="modal" data-target="#modal-contact" name="activate" value="{{user.email}}">Activate</button>
+                    <button type="submit" class="btn btn-xs fs-10 btn-bold btn-warning" href="#" name="delete" value="{{user.email}}">Delete</button>
+                </div>
+              </form>
+            </footer>
+        </div>
+        {% endfor %}
+
+
+        <!-- <nav>
+            <ul class="pagination justify-content-center">
+                <li class="page-item active">
+                    <a class="page-link" href="#">1</a>
+                </li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item"><a class="page-link" href="#">4</a></li>
+                <li class="page-item"><a class="page-link" href="#">5</a></li>
+            </ul>
+        </nav> -->
+        <br>
+    </div>
+    </div>
+
+
+    <a href="#" class="float">
+    <i class="fa fa-plus my-float"></i>
+    </a>
+
+
+    </div>
+
+
+<script type="text/javascript"></script>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends 'admins/admin_nav.html' %}
+{% load static %}
+
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title> user list </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+    <link href="https://netdna.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/admins/list_users.css' %}" >
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" >
+    <link rel="stylesheet" href="{% static 'css/admins/classic_report.css' %}" />
+</head>
+
+<body>
+    <br><br><br>
+    <div >
+        <table>
+            <thead>
+                <tr class="row head">
+                <th class="cell column1">First Name</th>
+                <th class="cell column2">Last Name</th>
+                <th class="cell column3">Type</th>
+                <th class="cell column4">email</th>
+                <th class="cell column5">Is_Active</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                {% for user in users %}
+                <tr class="row body">
+                <td class="cell column1">{{user.first_name}}</td>
+                <td class="cell column2">{{user.last_name}}</td>
+                <td class="cell column3">{{user.userAuth}}</td>
+                <td class="cell column4">{{user.email}}</td>
+                <td class="cell column5">{{user.is_active}}</td>
+                </tr>
+                {% endfor %}
+            
+            </tbody>
+        </table>
+
+        <br><br>
+
+        <table>
+            <thead>
+                <tr class="row head">
+                <th class="cell column1">Compony Name</th>
+                <th class="cell column2">Tax Number</th>
+                <th class="cell column3">Type</th>
+                <th class="cell column4">email</th>
+                <th class="cell column5">Is_Active</th>
+                </tr>
+            </thead>
+        
+            <tbody>
+                {% for seller in sellers %}
+                <tr class="row body">
+                <td class="cell column1">{{seller.companyName}}</td>
+                <td class="cell column2">{{seller.taxNumber}}</td>
+                <td class="cell column3">{{seller.userAuth}}</td>
+                <td class="cell column4">{{seller.email}}</td>
+                <td class="cell column5">{{seller.is_active}}</td>
+                </tr>
+                {% endfor %}
+            
+            </tbody>
+        </table>
+
+    </div>
+    <br><br><br>
+</bobdy>
+</html>
+{% endblock %}

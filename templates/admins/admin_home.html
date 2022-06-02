@@ -1,4 +1,4 @@
-{% extends 'core/base.html' %}
+{% extends 'admins/admin_nav.html' %}
 {% load static %}
 {% block content %}
 <!DOCTYPE html>
@@ -9,7 +9,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css'>
-  <link rel='stylesheet' href="{% static 'css\core\charts-style.css' %}">
+  <link rel='stylesheet' href="{% static 'css\admins\charts-style.css' %}">
 
   <title>Admin Home Page</title>
 
@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="main">
-      <a href="#">
+      <a href="{% url 'list_users'%}">
         <center>
           <div class="content_img"><img class="mainImage" src="{% static 'images\core\users.png'%}" alt="">
             <div class="overlay">
@@ -49,7 +49,7 @@
           </div>
         </center>
       </a>
-      <a href="#">
+      <a href="{% url 'list_products' %}">
         <center>
           <div class="content_img"><img class="mainImage" src="{% static 'images\core\products.jpg'%}" alt="">
             <div class="overlay">
@@ -58,7 +58,7 @@
           </div>
         </center>
       </a>
-      <a href="#">
+      <a href="{% url 'classic_report'%}">
         <center>
           <div class="content_img"><img class="mainImage" src="{% static 'images\core\reports.png'%}" alt="">
             <div class="overlay">
@@ -114,9 +114,19 @@
         },
         options: {
             scales: {
-                y: {
-                    beginAtZero: true
+              y:{
+                grid : {
+                  display :false,
+                  drawTicks : false
+                },
+                display :false,
+              },
+              x:{
+                grid : {
+                  display :false,
+                  drawTicks : false
                 }
+              },
             }
         }
     });
@@ -146,9 +156,19 @@
       },
       options: {
           scales: {
-              y: {
-                  beginAtZero: true
+            y:{
+              grid : {
+                display :false,
+                drawTicks : false
+              },
+              display :false,
+            },
+            x:{
+              grid : {
+                display :false,
+                drawTicks : false
               }
+            },
           }
       }
   });

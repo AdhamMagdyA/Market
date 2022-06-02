@@ -1,5 +1,6 @@
 
 from email.errors import FirstHeaderLineIsContinuationDefect
+from turtle import Turtle
 from django.conf import settings
 from django.http import JsonResponse
 from django.shortcuts import redirect, render
@@ -233,8 +234,111 @@ def admin_profile_edit (request):
 
 
 
+def admin_list_user(request):
+    if 'search-mail' in request.GET:
+        request.session['user-search-email']=request.GET.get('search-mail')
+        print("session is : ",request.session['user-search-email'])
+        return redirect('sus-adm-fet')
+    try:
+        if request.session['message']:
+            context ={
+                'users':User.objects.filter(userAuth=Authorization.objects.get(auth_name="user") , is_active =False),
+                'message':request.session['message']
+            }
+    except:
+        context ={
+            'users':User.objects.filter(userAuth=Authorization.objects.get(auth_name="user") , is_active =False),
+        }
+    if request.method== 'POST':
+        if request.POST.get('activate'):
+            user=User.objects.get(email=request.POST.get('activate'))
+            user.is_active=True 
+            user.save()
+            request.session['message']="User activated successfuly"
+            return redirect('list_users')
+        
+        elif request.POST.get('delete'):
+            user=User.objects.get(email=request.POST.get('delete')) 
+            user.delete()
+            request.session['message']="User Deleted successfuly"
+            return redirect('list_users')
+    return render(request, 'admins/list_user.html',context)
+
+# suspend_admin-features
+def sus_adm_fet(request):
+    print("session in sus_adm_fet is : ",request.session['user-search-email'])
+    context={}
+    print(request.POST)
+    if request.session.has_key('user-search-email'):
+        try:
+            user =User.objects.get(email=request.session['user-search-email'] , is_active=True , userAuth=Authorization.objects.get(auth_name="user"))
+            if user is not None:
+                context={
+                    'user':user
+                }
+                if request.method== 'POST':
+                    if request.POST.get('suspend')=="suspend":
+                        print(user)
+
+                        user.is_active=False
+                        user.save()
+                        request.session['message']="Suspend has been done successfuly"
+                        return redirect('list_users')
+                    
+                    elif request.POST.get('makeAdmin')=="makeAdmin":
+                        user.userAuth = Authorization.objects.get(auth_name="admin")
+                        print(user.userAuth)
+                        user.save()
+                        request.session['message']="Upgrading into admin has been done successfuly"
+                        return redirect('list_users')
+        except:
+            request.session['message']="Not found or Suspended User"
+            return redirect('list_users')
+    else:
+        return render(request, 'admins/list_user.html',{'message':"Not found or Suspended User" , 'users':User.objects.filter(userAuth=Authorization.objects.get(auth_name="user") , is_active =False)})
+  
+    return render(request,'admins/suspend_makeAdmin.html',context)
 
 
+def admin_list_product(request):
+    if request.method=='POST':
+        print('in post')
+        if request.POST.get('accepted'):
+            print('in accepted')
+            product=Product.objects.get(id=request.POST.get('accepted'))
+            print(product)
+            product.productActivation=True
+            product.save()
+            context ={
+                'message':"Product has been Accepted successfuly",
+                'products':Product.objects.filter(productActivation=False)
+            }
+            return render(request, 'admins/list_product.html',context)
+
+        elif request.POST.get('delete'):
+            print('in delte')
+            product=Product.objects.get(id=request.POST.get('delete'))
+            print(product)
+            product.delete()
+            context ={
+                'message':"Product has been deleted successfuly",
+                'products':Product.objects.filter(productActivation=False)
+            }
+            return render(request, 'admins/list_product.html',context)
+
+    products=Product.objects.filter(productActivation=False)
+    context ={
+        'products':products
+    }
+    return render(request, 'admins/list_product.html',context)
+
+
+def classic_report(request):
+    context={
+        'users':User.objects.all(),
+        'sellers':Seller.objects.all(),
+    }
+    return render(request,'admins/classic_report.html',context)
 
 
 
@@ -247,19 +351,3 @@ def admin_profile_edit (request):
 
 
         
-        # ch= request.POST.getList('choices')
-        # print(ch)
-        #if ch.lenght >0 :
-        #preferedUserCategories=Category.objects.get(name=ch[0])
-
-        # ch= request.POST.get('cb1')
-        # ch1=Category.objects.contains(ch)
-        # ch= request.POST.get('cb2')
-        # ch= request.POST.get('cb3')
-
-        # User.preferedUserCategories.get_object(id=ch1.id)
-
-
-        # User.preferedUserCategories.append(ch1)
-        # User.preferedUserCategories.append(ch2)
-        # User.preferedUserCategories.append(ch3)
