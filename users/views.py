@@ -120,6 +120,7 @@ def signup (request):
                 password= generateRondamPassword()
                 # create new cart and assign it to the user
                 userCart=Cart()
+                userCart.cartName="cart of "+email
                 userCart.save()
                 type=Authorization.objects.get(auth_name="user")
                 data=User(first_name=firstName, last_name=lastName, email=email, password=password, userCart=userCart, userPhoto=request.FILES['upload'], userAuth=type)
